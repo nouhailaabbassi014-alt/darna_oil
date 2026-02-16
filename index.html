@@ -35,7 +35,6 @@
         }
 
         .dark-mode {
-
             --primary-green: #A8B88A;
             --light-green: #6B8E23;
             --dark-green: #B8C4A8;
@@ -59,7 +58,6 @@
             --border-color: #3A3A3A;
             --footer-bg: linear-gradient(135deg, #2A2A2A 0%, #1E1E1E 100%);
             
-            /* صور الخلفية للثيم الداكن */
             --hero-overlay-dark: linear-gradient(rgba(30, 30, 30, 0.88), rgba(18, 18, 18, 0.88));
         }
 
@@ -84,40 +82,6 @@
             padding: 0 20px;
         }
 
-        /* زر تبديل النمط */
-        .theme-switcher {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-left: 20px;
-        }
-
-        .theme-btn {
-            background: var(--primary-green);
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            box-shadow: var(--box-shadow);
-        }
-
-        .theme-btn:hover {
-            background: var(--dark-green);
-            transform: translateY(-2px);
-        }
-
-        .theme-btn.active {
-            background: var(--pink);
-        }
-
-        /* زر تبديل اللغة */
         .language-switcher {
             display: flex;
             align-items: center;
@@ -150,7 +114,6 @@
             background: var(--pink);
         }
 
-        /* الرأس */
         header {
             background: var(--bg-secondary);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -275,7 +238,6 @@
             font-weight: bold;
         }
 
-        /* قسم البطل المعدل */
         .hero {
             padding: 150px 0;
             text-align: center;
@@ -286,16 +248,6 @@
             min-height: 85vh;
             display: flex;
             align-items: center;
-        }
-
-        .hero.light-theme {
-            background: var(--hero-overlay-light), url('How Olive Oil Supports Gut Health.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-
-        .hero.dark-theme {
             background: var(--hero-overlay-dark), url('How Olive Oil Supports Gut Health.png');
             background-size: cover;
             background-position: center;
@@ -397,7 +349,6 @@
             transform: translateX(100%);
         }
 
-        /* المنتجات */
         .section-title {
             text-align: center;
             margin-bottom: 60px;
@@ -514,18 +465,22 @@
             font-size: 2.2rem;
             color: var(--text-heading);
             font-weight: 700;
-            margin-bottom: 25px;
-            position: relative;
-            display: inline-block;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
-        .product-price::before {
-            content: 'DH';
+        .price-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+        }
+
+        .price-currency {
             font-size: 1rem;
             color: var(--gold);
-            position: absolute;
-            left: -30px;
-            top: 10px;
+            font-weight: 500;
         }
 
         .add-to-cart {
@@ -534,23 +489,25 @@
             background: linear-gradient(135deg, var(--primary-green) 0%, var(--light-green) 100%);
             color: white;
             border: none;
-            padding: 18px;
+            padding: 20px;
             border-radius: var(--border-radius);
-            font-size: 1.1rem;
-            font-weight: 600;
+            font-size: 1.2rem;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
             border: 2px solid var(--pink);
+            box-shadow: var(--box-shadow);
+            margin-top: 10px;
         }
 
         .add-to-cart:hover {
             background: linear-gradient(135deg, var(--pink) 0%, #D8818E 100%);
             transform: translateY(-3px);
+            box-shadow: var(--box-shadow-hover);
         }
 
-        /* قسم قصتنا */
         .about {
             background: var(--bg-secondary);
             padding: 100px 0;
@@ -631,7 +588,6 @@
             transform: scale(1.05);
         }
 
-        /* نموذج الاتصال */
         .contact {
             margin-bottom: 100px;
         }
@@ -716,7 +672,6 @@
             transform: translateY(-3px);
         }
 
-        /* نافذة الطلب */
         .order-modal {
             display: none;
             position: fixed;
@@ -904,7 +859,6 @@
             padding: 18px;
         }
 
-        /* تنبيهات */
         .alert {
             padding: 20px;
             border-radius: var(--border-radius);
@@ -947,7 +901,6 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* الفوتر */
         footer {
             background: var(--footer-bg);
             color: var(--text-primary);
@@ -1083,14 +1036,12 @@
             font-size: 0.9rem;
         }
 
-        /* تصميم متجاوب */
         @media (max-width: 992px) {
             .header-container {
                 flex-direction: column;
                 gap: 20px;
             }
 
-            .theme-switcher,
             .language-switcher {
                 margin-left: 0;
                 margin-top: 10px;
@@ -1206,7 +1157,6 @@
     </style>
 </head>
 <body class="dark-mode">
-    <!-- الرأس -->
     <header>
         <div class="container header-container">
             <div class="logo">
@@ -1225,15 +1175,6 @@
                 </ul>
             </nav>
             
-            <div class="theme-switcher">
-                <button class="theme-btn active" id="theme-dark">
-                    <i class="fas fa-moon"></i> <span data-ar="دارك" data-en="Dark">دارك</span>
-                </button>
-                <button class="theme-btn" id="theme-light">
-                    <i class="fas fa-sun"></i> <span data-ar="فاتح" data-en="Light">فاتح</span>
-                </button>
-            </div>
-            
             <div class="language-switcher">
                 <button class="language-btn active" id="lang-ar">
                     <i class="fas fa-language"></i> العربية
@@ -1250,8 +1191,7 @@
         </div>
     </header>
 
-    <!-- قسم البطل المعدل -->
-    <section class="hero dark-theme" id="home">
+    <section class="hero" id="home">
         <div class="container hero-content">
             <h2 data-ar="تجربة فاخرة من الطبيعة المغربية" data-en="A Luxurious Experience from Moroccan Nature">تجربة فاخرة من الطبيعة المغربية</h2>
             <p data-ar="زيت زيتون عائلي مصنوع بأيدي مغربية خبيرة، يجمع بين التقاليد الأصيلة والجودة العالمية. منتجنا هو ثمرة سنوات من الخبرة والعناية." data-en="Family-made olive oil crafted by expert Moroccan hands, combining authentic traditions with global quality. Our product is the fruit of years of experience and care.">زيت زيتون عائلي مصنوع بأيدي مغربية خبيرة، يجمع بين التقاليد الأصيلة والجودة العالمية. منتجنا هو ثمرة سنوات من الخبرة والعناية.</p>
@@ -1259,7 +1199,6 @@
         </div>
     </section>
 
-    <!-- قسم المنتجات -->
     <section id="products">
         <div class="container">
             <div class="section-title">
@@ -1267,12 +1206,10 @@
                 <p data-ar="اختر من بين تشكيلتنا المميزة من زيت الزيتون المغربي الأصيل، المعصور بعناية فائقة" data-en="Choose from our distinctive collection of authentic Moroccan olive oil, carefully pressed">اختر من بين تشكيلتنا المميزة من زيت الزيتون المغربي الأصيل، المعصور بعناية فائقة</p>
             </div>
             <div class="products-container" id="products-container">
-                <!-- سيتم إضافة المنتجات ديناميكيًا -->
             </div>
         </div>
     </section>
 
-    <!-- قسم قصتنا -->
     <section class="about" id="about">
         <div class="container">
             <div class="about-content">
@@ -1290,7 +1227,6 @@
         </div>
     </section>
 
-    <!-- نموذج الاتصال -->
     <section class="contact" id="contact">
         <div class="container">
             <div class="section-title">
@@ -1323,7 +1259,6 @@
         </div>
     </section>
 
-    <!-- نافذة الطلب -->
     <div class="order-modal" id="order-modal">
         <div class="order-content">
             <div class="order-header">
@@ -1337,7 +1272,6 @@
             </div>
             
             <div class="order-items" id="order-items">
-                <!-- سيتم إضافة عناصر الطلب ديناميكيًا -->
             </div>
             
             <div class="order-total">
@@ -1386,7 +1320,6 @@
         </div>
     </div>
 
-    <!-- الفوتر -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -1426,7 +1359,6 @@
     </footer>
 
     <script>
-        // بيانات المنتجات باللغتين
         const productsData = [
             {
                 id: 1,
@@ -1470,7 +1402,6 @@
             }
         ];
 
-        // متغيرات النظام
         let cart = JSON.parse(localStorage.getItem('darnaCart')) || [];
         const cartCount = document.querySelector('.cart-count');
         const cartButton = document.getElementById('cart-button');
@@ -1478,140 +1409,59 @@
         const closeOrder = document.getElementById('close-order');
         const continueShopping = document.getElementById('continue-shopping');
         const clearCartBtn = document.getElementById('clear-cart-btn');
-        const heroSection = document.querySelector('.hero');
 
-        // FormSubmit endpoints
         const ORDER_ENDPOINT = "https://formsubmit.co/ajax/nouhailaabbassi014@gmail.com";
         const CONTACT_ENDPOINT = "https://formspree.io/f/xzdabykk";
 
-        // حالة اللغة والنمط الحالي
         let currentLanguage = 'ar';
-        let currentTheme = 'dark';
 
-        // تهيئة الصفحة
         document.addEventListener('DOMContentLoaded', function() {
             renderProducts();
             updateCartCount();
-            updateHeroTheme();
             
             if (localStorage.getItem('darnaCart')) {
                 cart = JSON.parse(localStorage.getItem('darnaCart'));
                 updateCartCount();
             }
             
-            // تعيين اللغة المحفوظة
             const savedLanguage = localStorage.getItem('darnaLanguage');
             if (savedLanguage === 'en') {
                 switchToEnglish();
             }
             
-            // تعيين النمط المحفوظ
-            const savedTheme = localStorage.getItem('darnaTheme');
-            if (savedTheme === 'light') {
-                switchToLightTheme();
-            } else {
-                updateHeroTheme();
-            }
-            
-            // إضافة أحداث للأزرار
             document.getElementById('lang-ar').addEventListener('click', switchToArabic);
             document.getElementById('lang-en').addEventListener('click', switchToEnglish);
-            document.getElementById('theme-dark').addEventListener('click', switchToDarkTheme);
-            document.getElementById('theme-light').addEventListener('click', switchToLightTheme);
         });
 
-        // تحديث خلفية البطل حسب الثيم
-        function updateHeroTheme() {
-            if (currentTheme === 'dark') {
-                heroSection.classList.remove('light-theme');
-                heroSection.classList.add('dark-theme');
-            } else {
-                heroSection.classList.remove('dark-theme');
-                heroSection.classList.add('light-theme');
-            }
-        }
-
-        // تبديل إلى العربية
         function switchToArabic() {
             currentLanguage = 'ar';
             document.documentElement.lang = 'ar';
             document.documentElement.dir = 'rtl';
             document.title = "دارنا - زيت الزيتون الفاخر";
             
-            // تحديث أزرار اللغة
             document.getElementById('lang-ar').classList.add('active');
             document.getElementById('lang-en').classList.remove('active');
             
-            // تحديث جميع النصوص
             updateAllTexts();
             
-            // حفظ التفضيل
             localStorage.setItem('darnaLanguage', 'ar');
         }
 
-        // تبديل إلى الإنجليزية
         function switchToEnglish() {
             currentLanguage = 'en';
             document.documentElement.lang = 'en';
             document.documentElement.dir = 'ltr';
             document.title = "DARNA - Premium Olive Oil";
             
-            // تحديث أزرار اللغة
             document.getElementById('lang-ar').classList.remove('active');
             document.getElementById('lang-en').classList.add('active');
             
-            // تحديث جميع النصوص
             updateAllTexts();
             
-            // حفظ التفضيل
             localStorage.setItem('darnaLanguage', 'en');
         }
 
-        // تبديل إلى النمط الداكن
-        function switchToDarkTheme() {
-            currentTheme = 'dark';
-            document.body.classList.add('dark-mode');
-            document.body.classList.remove('light-mode');
-            
-            // تحديث أزرار النمط
-            document.getElementById('theme-dark').classList.add('active');
-            document.getElementById('theme-light').classList.remove('active');
-            
-            // تحديث الأيقونات
-            document.getElementById('theme-dark').innerHTML = '<i class="fas fa-moon"></i> <span data-ar="دارك" data-en="Dark">' + (currentLanguage === 'ar' ? 'دارك' : 'Dark') + '</span>';
-            document.getElementById('theme-light').innerHTML = '<i class="fas fa-sun"></i> <span data-ar="فاتح" data-en="Light">' + (currentLanguage === 'ar' ? 'فاتح' : 'Light') + '</span>';
-            
-            // تحديث خلفية البطل
-            updateHeroTheme();
-            
-            // حفظ التفضيل
-            localStorage.setItem('darnaTheme', 'dark');
-        }
-
-        // تبديل إلى النمط الفاتح
-        function switchToLightTheme() {
-            currentTheme = 'light';
-            document.body.classList.add('light-mode');
-            document.body.classList.remove('dark-mode');
-            
-            // تحديث أزرار النمط
-            document.getElementById('theme-dark').classList.remove('active');
-            document.getElementById('theme-light').classList.add('active');
-            
-            // تحديث الأيقونات
-            document.getElementById('theme-dark').innerHTML = '<i class="fas fa-moon"></i> <span data-ar="دارك" data-en="Dark">' + (currentLanguage === 'ar' ? 'دارك' : 'Dark') + '</span>';
-            document.getElementById('theme-light').innerHTML = '<i class="fas fa-sun"></i> <span data-ar="فاتح" data-en="Light">' + (currentLanguage === 'ar' ? 'فاتح' : 'Light') + '</span>';
-            
-            // تحديث خلفية البطل
-            updateHeroTheme();
-            
-            // حفظ التفضيل
-            localStorage.setItem('darnaTheme', 'light');
-        }
-
-        // تحديث جميع النصوص حسب اللغة
         function updateAllTexts() {
-            // تحديث النصوص مع data attributes
             document.querySelectorAll('[data-ar], [data-en]').forEach(element => {
                 if (currentLanguage === 'ar') {
                     if (element.hasAttribute('data-ar')) {
@@ -1632,33 +1482,34 @@
                 }
             });
 
-            // تحديث أسماء المنتجات والأوصاف
             document.querySelectorAll('.product-card').forEach((card, index) => {
                 if (index < productsData.length) {
                     const product = productsData[index];
                     const title = card.querySelector('.product-info h3');
                     const description = card.querySelector('.product-description');
+                    const priceNumber = card.querySelector('.price-number');
+                    const priceCurrency = card.querySelector('.price-currency');
                     const button = card.querySelector('.add-to-cart span');
                     
                     if (currentLanguage === 'ar') {
                         title.textContent = product.nameAr;
                         description.textContent = product.descriptionAr;
+                        priceCurrency.textContent = 'درهم';
                         if (button) button.textContent = 'أضف إلى السلة';
                     } else {
                         title.textContent = product.nameEn;
                         description.textContent = product.descriptionEn;
+                        priceCurrency.textContent = 'DH';
                         if (button) button.textContent = 'Add to Cart';
                     }
                 }
             });
 
-            // تحديث أسماء المنتجات في السلة
             if (cart.length > 0) {
                 renderOrderItems();
             }
         }
 
-        // عرض المنتجات
         function renderProducts() {
             const productsContainer = document.getElementById('products-container');
             productsContainer.innerHTML = '';
@@ -1674,7 +1525,10 @@
                         <h3>${currentLanguage === 'ar' ? product.nameAr : product.nameEn}</h3>
                         <span class="product-size">${product.size}</span>
                         <p class="product-description">${currentLanguage === 'ar' ? product.descriptionAr : product.descriptionEn}</p>
-                        <div class="product-price">${product.price.toFixed(2)}</div>
+                        <div class="product-price">
+                            <span class="price-number">${product.price.toFixed(2)}</span>
+                            <span class="price-currency">${currentLanguage === 'ar' ? 'درهم' : 'DH'}</span>
+                        </div>
                         <button class="add-to-cart" data-id="${product.id}">
                             <i class="fas fa-cart-plus"></i> <span data-ar="أضف إلى السلة" data-en="Add to Cart">${currentLanguage === 'ar' ? 'أضف إلى السلة' : 'Add to Cart'}</span>
                         </button>
@@ -1688,7 +1542,6 @@
             });
         }
 
-        // إضافة إلى السلة
         function addToCart(e) {
             const productId = parseInt(e.target.closest('.add-to-cart').getAttribute('data-id'));
             const product = productsData.find(p => p.id === productId);
@@ -1711,20 +1564,17 @@
             localStorage.setItem('darnaCart', JSON.stringify(cart));
             updateCartCount();
             
-            // تنبيه مؤقت
             const alertMessage = currentLanguage === 'ar' 
                 ? `${product.nameAr} أضيف إلى سلة التسوق` 
                 : `${product.nameEn} added to cart`;
             showTemporaryAlert(currentLanguage === 'ar' ? 'تمت الإضافة!' : 'Added!', alertMessage, 'success');
         }
 
-        // تحديث عداد السلة
         function updateCartCount() {
             const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
             cartCount.textContent = totalItems;
         }
 
-        // عرض عناصر الطلب
         function renderOrderItems() {
             const orderItemsContainer = document.getElementById('order-items');
             const orderTotalElement = document.getElementById('order-total');
@@ -1766,7 +1616,6 @@
             orderTotalElement.textContent = total.toFixed(2);
         }
 
-        // إفراغ السلة
         clearCartBtn.addEventListener('click', function() {
             if (cart.length === 0) {
                 const message = currentLanguage === 'ar' 
@@ -1787,7 +1636,6 @@
             showAlert('order-alert', message, 'success');
         });
 
-        // فتح نافذة الطلب
         cartButton.addEventListener('click', function(e) {
             e.preventDefault();
             renderOrderItems();
@@ -1795,7 +1643,6 @@
             document.getElementById('order-alert').style.display = 'none';
         });
 
-        // إغلاق نافذة الطلب
         closeOrder.addEventListener('click', function() {
             orderModal.style.display = 'none';
         });
@@ -1804,7 +1651,7 @@
             orderModal.style.display = 'none';
         });
 
-        // إرسال الطلب
+        
         document.getElementById('order-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             
@@ -1816,7 +1663,7 @@
                 return;
             }
             
-            // جمع بيانات النموذج
+         
             const orderData = {
                 name: document.getElementById('order-name').value,
                 phone: document.getElementById('order-phone').value,
@@ -1828,7 +1675,7 @@
                 language: currentLanguage
             };
             
-            // تحضير تفاصيل الطلب
+           
             let orderDetails = currentLanguage === 'ar' ? 'تفاصيل الطلب:\n\n' : 'Order Details:\n\n';
             cart.forEach(item => {
                 const itemTotal = item.price * item.quantity;
@@ -1836,7 +1683,7 @@
                 orderDetails += `• ${itemName} (${item.size})\n  ${currentLanguage === 'ar' ? 'الكمية:' : 'Quantity:'} ${item.quantity}\n  ${currentLanguage === 'ar' ? 'السعر:' : 'Price:'} ${item.price} ${currentLanguage === 'ar' ? 'درهم' : 'DH'}\n  ${currentLanguage === 'ar' ? 'المجموع:' : 'Total:'} ${itemTotal} ${currentLanguage === 'ar' ? 'درهم' : 'DH'}\n\n`;
             });
             
-            // تحضير البيانات للإرسال
+            
             const formData = new FormData();
             formData.append('_subject', `${currentLanguage === 'ar' ? 'طلب جديد - دارنا زيت الزيتون - ' : 'New Order - DARNA Olive Oil - '}${orderData.name}`);
             formData.append('name', orderData.name);
@@ -1858,7 +1705,7 @@
             confirmButton.disabled = true;
             
             try {
-                // إرسال الطلب
+                
                 const response = await fetch(ORDER_ENDPOINT, {
                     method: 'POST',
                     body: formData,
@@ -1868,7 +1715,7 @@
                 const result = await response.json();
                 
                 if (result.success) {
-                    // رسالة النجاح
+                    
                     const successMessage = currentLanguage === 'ar' 
                         ? `<div style="text-align: center;">
                             <i class="fas fa-check-circle" style="font-size: 3rem; color: var(--primary-green); margin-bottom: 15px;"></i>
@@ -1885,13 +1732,13 @@
                     
                     showAlert('order-alert', successMessage, 'success');
                     
-                    // تفريغ السلة بعد النجاح
+                   
                     cart = [];
                     localStorage.setItem('darnaCart', JSON.stringify(cart));
                     updateCartCount();
                     renderOrderItems();
                     
-                    // إعادة تعيين النموذج
+                    
                     document.getElementById('order-form').reset();
                     
                 } else {
@@ -1912,7 +1759,7 @@
             }
         });
 
-        // إرسال نموذج الاتصال
+        
         document.getElementById('contact-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             
@@ -1957,7 +1804,7 @@
             }
         });
 
-        // وظائف مساعدة
+ 
         function showAlert(elementId, message, type) {
             const alertElement = document.getElementById(elementId);
             alertElement.innerHTML = message;
@@ -1993,7 +1840,6 @@
             }, 3000);
         }
 
-        // إضافة أنماط للتنبيهات المؤقتة
         const style = document.createElement('style');
         style.textContent = `
             @keyframes slideInRight {
@@ -2015,7 +1861,7 @@
         `;
         document.head.appendChild(style);
 
-        // التنقل السلس
+
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 if (this.getAttribute('href').startsWith('#')) {
@@ -2032,7 +1878,7 @@
             });
         });
 
-        // إغلاق نافذة الطلب عند النقر خارجها
+
         window.addEventListener('click', function(e) {
             if (e.target === orderModal) {
                 orderModal.style.display = 'none';
@@ -2040,5 +1886,4 @@
         });
     </script>
 </body>
-
 </html>
