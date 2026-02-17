@@ -1164,10 +1164,10 @@
 
     <script>
         const productsData = [
-            { id: 1, nameAr: "زيت زيتون بكر ممتاز", nameEn: "Extra Virgin Premium Olive Oil", size: "500 مل", descriptionAr: "عبوة أنيقة للاستخدام اليومي، مثالية للسلطات والطهي الخفيف.", descriptionEn: "Elegant bottle for daily use, perfect for salads and light cooking.", price: 50, image: "darna (6).png" },
-            { id: 2, nameAr: "زيت زيتون عالي الجودة", nameEn: "High Quality Olive Oil", size: "750 مل", descriptionAr: "عبوة متوسطة تناسب العائلات الصغيرة، بنكهة غنية.", descriptionEn: "Medium bottle suitable for small families, with a rich flavor.", price: 70, image: "ChatGPT Image 8 févr. 2026, 00_57_04.png" },
-            { id: 3, nameAr: "زيت زيتون عائلي فاخر", nameEn: "Family Premium Olive Oil", size: "5 لتر", descriptionAr: "عبوة اقتصادية للعائلات الكبيرة والمطاعم.", descriptionEn: "Economical bottle for large families and restaurants.", price: 349, image: "ChatGPT Image 8 févr. 2026, 00_53_09.png" },
-            { id: 4, nameAr: "زيت زيتون عائلي فاخر", nameEn: "Family Premium Olive Oil", size: "1 لتر", descriptionAr: "عبوة اقتصادية 1 لتر", descriptionEn: "Economical 1L bottle", price: 80, image: "image_1_1769830440880.jpg" }
+            { id: 1, nameAr: "زيت زيتون بكر ممتاز", nameEn: "Extra Virgin Premium Olive Oil", sizeAr: "500 مل", sizeEn: "500 ml", descriptionAr: "عبوة أنيقة للاستخدام اليومي، مثالية للسلطات والطهي الخفيف.", descriptionEn: "Elegant bottle for daily use, perfect for salads and light cooking.", price: 50, image: "darna (6).png" },
+            { id: 2, nameAr: "زيت زيتون عالي الجودة", nameEn: "High Quality Olive Oil", sizeAr: "750 مل", sizeEn: "750 ml", descriptionAr: "عبوة متوسطة تناسب العائلات الصغيرة، بنكهة غنية.", descriptionEn: "Medium bottle suitable for small families, with a rich flavor.", price: 70, image: "ChatGPT Image 8 févr. 2026, 00_57_04.png" },
+            { id: 3, nameAr: "زيت زيتون عائلي فاخر", nameEn: "Family Premium Olive Oil", sizeAr: "5 لتر", sizeEn: "5 L", descriptionAr: "عبوة اقتصادية للعائلات الكبيرة والمطاعم.", descriptionEn: "Economical bottle for large families and restaurants.", price: 349, image: "ChatGPT Image 8 févr. 2026, 00_53_09.png" },
+            { id: 4, nameAr: "زيت زيتون عائلي فاخر", nameEn: "Family Premium Olive Oil", sizeAr: "1 لتر", sizeEn: "1 L", descriptionAr: "عبوة اقتصادية 1 لتر", descriptionEn: "Economical 1L bottle", price: 80, image: "image_1_1769830440880.jpg" }
         ];
 
         let cart = JSON.parse(localStorage.getItem('darnaCart')) || [];
@@ -1196,7 +1196,7 @@
                     <div class="product-image"><img src="${p.image}" alt="${p.nameAr}" onerror="this.src='https://images.unsplash.com/photo-1533050487297-09b450131914?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80'"></div>
                     <div class="product-info">
                         <h3>${currentLanguage === 'ar' ? p.nameAr : p.nameEn}</h3>
-                        <span class="product-size">${p.size}</span>
+                        <span class="product-size">${currentLanguage === 'ar' ? p.sizeAr : p.sizeEn}</span>
                         <p class="product-description">${currentLanguage === 'ar' ? p.descriptionAr : p.descriptionEn}</p>
                         <div class="product-price"><span class="price-number">${p.price.toFixed(2)}</span><span class="price-currency">${currentLanguage === 'ar' ? 'درهم' : 'DH'}</span></div>
                         <button class="add-to-cart" data-id="${p.id}"><i class="fas fa-cart-plus"></i> <span>${currentLanguage === 'ar' ? 'أضف إلى السلة' : 'Add to Cart'}</span></button>
@@ -1210,7 +1210,14 @@
             const id = parseInt(e.target.closest('.add-to-cart').getAttribute('data-id'));
             const product = productsData.find(p => p.id === id);
             const existing = cart.find(item => item.id === id);
-            existing ? existing.quantity++ : cart.push({ id: product.id, nameAr: product.nameAr, nameEn: product.nameEn, size: product.size, price: product.price, quantity: 1 });
+            existing ? existing.quantity++ : cart.push({ 
+                id: product.id, 
+                nameAr: product.nameAr, 
+                nameEn: product.nameEn, 
+                size: currentLanguage === 'ar' ? product.sizeAr : product.sizeEn,
+                price: product.price, 
+                quantity: 1 
+            });
             localStorage.setItem('darnaCart', JSON.stringify(cart));
             updateCartCount();
             showTemporaryAlert(currentLanguage === 'ar' ? 'تمت الإضافة!' : 'Added!', currentLanguage === 'ar' ? `${product.nameAr} أضيف إلى السلة` : `${product.nameEn} added to cart`, 'success');
@@ -1224,7 +1231,11 @@
                 totalSpan.textContent = '0.00'; return;
             }
             let total = 0, html = '';
-            cart.forEach(item => { let itotal = item.price * item.quantity; total += itotal; html += `<div class="order-item"><div class="order-item-info"><h4>${currentLanguage === 'ar' ? item.nameAr : item.nameEn}</h4><p>${item.size} • ${currentLanguage === 'ar' ? 'الكمية:' : 'Qty:'} ${item.quantity}</p></div><div class="order-item-price">${itotal.toFixed(2)} ${currentLanguage === 'ar' ? 'درهم' : 'DH'}</div></div>`; });
+            cart.forEach(item => { 
+                let itotal = item.price * item.quantity; 
+                total += itotal; 
+                html += `<div class="order-item"><div class="order-item-info"><h4>${currentLanguage === 'ar' ? item.nameAr : item.nameEn}</h4><p>${item.size} • ${currentLanguage === 'ar' ? 'الكمية:' : 'Qty:'} ${item.quantity}</p></div><div class="order-item-price">${itotal.toFixed(2)} ${currentLanguage === 'ar' ? 'درهم' : 'DH'}</div></div>`;
+            });
             itemsDiv.innerHTML = html;
             totalSpan.textContent = total.toFixed(2);
         }
@@ -1253,8 +1264,26 @@
         });
 
         function updateAllTexts() {
-            document.querySelectorAll('[data-ar], [data-en]').forEach(el => { if (currentLanguage==='ar' && el.hasAttribute('data-ar')) { if (el.tagName==='INPUT'||el.tagName==='TEXTAREA') el.placeholder = el.getAttribute('data-ar-placeholder')||el.getAttribute('data-ar'); else el.textContent = el.getAttribute('data-ar'); } else if (currentLanguage==='en' && el.hasAttribute('data-en')) { if (el.tagName==='INPUT'||el.tagName==='TEXTAREA') el.placeholder = el.getAttribute('data-en-placeholder')||el.getAttribute('data-en'); else el.textContent = el.getAttribute('data-en'); } });
-            renderProducts(); if (cart.length) renderOrderItems();
+            document.querySelectorAll('[data-ar], [data-en]').forEach(el => { 
+                if (currentLanguage==='ar' && el.hasAttribute('data-ar')) { 
+                    if (el.tagName==='INPUT'||el.tagName==='TEXTAREA') el.placeholder = el.getAttribute('data-ar-placeholder')||el.getAttribute('data-ar'); 
+                    else el.textContent = el.getAttribute('data-ar'); 
+                } else if (currentLanguage==='en' && el.hasAttribute('data-en')) { 
+                    if (el.tagName==='INPUT'||el.tagName==='TEXTAREA') el.placeholder = el.getAttribute('data-en-placeholder')||el.getAttribute('data-en'); 
+                    else el.textContent = el.getAttribute('data-en'); 
+                } 
+            });
+            renderProducts(); 
+            if (cart.length) {
+                cart = cart.map(item => {
+                    const product = productsData.find(p => p.id === item.id);
+                    if (product) {
+                        item.size = currentLanguage === 'ar' ? product.sizeAr : product.sizeEn;
+                    }
+                    return item;
+                });
+                renderOrderItems();
+            }
         }
 
         cartButton.addEventListener('click', (e) => { e.preventDefault(); renderOrderItems(); orderModal.style.display='flex'; document.getElementById('order-alert').style.display='none'; });
