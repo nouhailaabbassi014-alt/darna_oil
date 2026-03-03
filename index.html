@@ -3,518 +3,371 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DARNA - Premium Olive Oil</title>
+    <title>DARNA – زيت الزيتون الفاخر</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Dancing+Script:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-green: #2C5F2D;
-            --light-green: #97B596;
-            --dark-green: #1F4A2C;
-            --beige: #F8F0E5;
-            --light-beige: #FEFBF6;
-            --pink: #E7B2A5;
-            --gold: #B68B5C;
-            --white: #FFFFFF;
-            --gray: #6B6B6B;
-            --dark-gray: #3F3F3F;
-            --border-radius: 20px;
-            --box-shadow: 0 15px 35px rgba(44, 95, 45, 0.08);
-            --box-shadow-hover: 0 25px 45px rgba(44, 95, 45, 0.15);
-            --bg-primary: var(--beige);
-            --bg-secondary: var(--light-beige);
-            --bg-card: var(--light-beige);
-            --text-primary: #2C3E4F;
-            --text-secondary: #4F5E6B;
-            --text-heading: var(--primary-green);
-            --border-color: rgba(151, 181, 150, 0.3);
-            --footer-bg: linear-gradient(145deg, #2C5F2D 0%, #3C7840 100%);
-            --hero-overlay-light: linear-gradient(135deg, rgba(248, 240, 229, 0.9) 0%, rgba(254, 251, 246, 0.9) 100%);
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        :root {
+            --olive: #5F7B5B;
+            --light-bg: #F9F7F4;
+            --card-bg: #FFFFFF;
+            --text-dark: #2E3E2C;
+            --text-soft: #5A5F57;
+            --border-light: #E7E4DD;
+            --accent-warm: #D9C5B3;
+            --footer-bg: #EAE7E0;
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.02);
+            --transition: all 0.2s ease;
         }
 
         body {
             font-family: 'Cairo', sans-serif;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.7;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
         }
 
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 16px;
         }
 
-        .language-switcher {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-left: 20px;
-        }
-
-        .language-btn {
-            background: var(--primary-green);
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 40px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            box-shadow: 0 4px 12px rgba(44, 95, 45, 0.15);
-            border: 1px solid rgba(255,255,255,0.3);
-        }
-
-        .language-btn:hover {
-            background: var(--dark-green);
-            transform: translateY(-2px);
-        }
-
-        .language-btn.active {
-            background: var(--pink);
-            color: var(--dark-gray);
-        }
-
+        /* header – only logo is sticky on mobile */
         header {
-            background: var(--bg-secondary);
-            box-shadow: 0 8px 25px rgba(44, 95, 45, 0.06);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            background: white;
+            border-bottom: 1px solid var(--border-light);
             padding: 8px 0;
-            border-bottom: 2px solid var(--border-color);
-            backdrop-filter: blur(4px);
         }
 
         .header-container {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 100;
+            padding: 4px 0;
         }
 
         .logo img {
-            height: 70px;
+            height: 55px;
             width: auto;
             border-radius: 50%;
-            padding: 4px;
-            background-color: white;
-            box-shadow: var(--box-shadow);
-            border: 2px solid var(--light-green);
+            background: white;
+            padding: 2px;
+            border: 1px solid var(--accent-warm);
         }
 
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .logo-text h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.8rem;
-            color: var(--text-heading);
-            margin-bottom: 5px;
-            text-shadow: 2px 2px 0 rgba(151, 181, 150, 0.15);
-        }
-
-        .logo-text p {
-            color: var(--text-secondary);
+        .logo p {
             font-size: 0.9rem;
-            font-weight: 300;
+            color: var(--olive);
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        nav {
+            order: 1;
+            width: 100%;
+            margin-top: 8px;
+            border-top: 1px solid var(--border-light);
+            padding-top: 8px;
         }
 
         nav ul {
             display: flex;
+            gap: 24px;
             list-style: none;
-            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         nav a {
             text-decoration: none;
-            color: var(--text-heading);
+            color: var(--text-dark);
             font-weight: 600;
-            font-size: 1.1rem;
-            position: relative;
-            padding: 8px 0;
-            transition: all 0.3s;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--pink);
-            transition: width 0.3s;
+            font-size: 1rem;
+            padding: 4px 0;
+            border-bottom: 2px solid transparent;
+            transition: var(--transition);
         }
 
         nav a:hover {
-            color: var(--pink);
+            border-bottom-color: var(--olive);
+            color: var(--olive);
         }
 
-        nav a:hover::after {
-            width: 100%;
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .language-switcher {
+            display: flex;
+            gap: 4px;
+        }
+
+        .language-btn {
+            background: transparent;
+            border: 1px solid var(--border-light);
+            color: var(--text-dark);
+            padding: 6px 12px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .language-btn.active {
+            background: var(--olive);
+            color: white;
+            border-color: var(--olive);
         }
 
         .cart-icon {
             position: relative;
-            background-color: var(--primary-green);
-            color: white;
-            width: 50px;
-            height: 50px;
+            background: transparent;
+            border: 1px solid var(--border-light);
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 8px 16px rgba(44, 95, 45, 0.2);
-            margin-right: 15px;
-            border: 2px solid var(--gold);
+            transition: var(--transition);
         }
 
         .cart-icon:hover {
-            transform: translateY(-3px);
-            background-color: var(--pink);
-            border-color: var(--primary-green);
+            border-color: var(--olive);
+            background: #f5f2ee;
         }
 
         .cart-count {
             position: absolute;
-            top: -5px;
-            right: -5px;
-            background-color: var(--gold);
-            color: white;
+            top: -4px;
+            right: -4px;
+            background: var(--accent-warm);
+            color: var(--text-dark);
             border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            font-size: 0.8rem;
+            width: 22px;
+            height: 22px;
+            font-size: 0.7rem;
             display: flex;
-            justify-content: center;
             align-items: center;
-            font-weight: bold;
-            border: 2px solid var(--light-beige);
+            justify-content: center;
+            font-weight: 700;
+            border: 2px solid white;
         }
 
+        /* hero minimal */
         .hero {
-            padding: 140px 0;
-            text-align: center;
-            margin-bottom: 70px;
-            border-radius: 0 0 50px 50px;
-            position: relative;
-            overflow: hidden;
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            background: var(--hero-overlay-light), url('How Olive Oil Supports Gut Health.png');
-            background-size: cover;
-            background-position: center 30%;
-            background-attachment: fixed;
-            box-shadow: inset 0 -10px 30px rgba(0,0,0,0.02);
+            padding: 80px 0;
+            background: var(--light-bg);
+            border-bottom: 1px solid var(--border-light);
         }
 
         .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 850px;
+            max-width: 700px;
             margin: 0 auto;
-            padding: 60px 40px;
-            background: rgba(254, 251, 246, 0.7);
-            backdrop-filter: blur(8px);
-            border-radius: var(--border-radius);
-            border: 2px solid rgba(151, 181, 150, 0.4);
-            animation: fadeInUp 1s ease-out;
-            box-shadow: 0 25px 50px -12px rgba(44, 95, 45, 0.25);
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            text-align: center;
+            padding: 20px;
         }
 
         .hero h2 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 4rem;
-            color: var(--primary-green);
-            margin-bottom: 30px;
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: var(--olive);
+            margin-bottom: 20px;
             line-height: 1.2;
-            text-shadow: 3px 3px 0 rgba(231, 178, 165, 0.2);
         }
 
         .hero p {
-            font-size: 1.4rem;
-            color: var(--dark-gray);
-            margin-bottom: 50px;
-            max-width: 700px;
-            margin: 0 auto 50px;
-            line-height: 1.8;
-            font-weight: 400;
+            font-size: 1.2rem;
+            color: var(--text-soft);
+            margin-bottom: 32px;
         }
 
         .cta-button {
             display: inline-block;
-            background: linear-gradient(145deg, var(--primary-green), var(--dark-green));
+            background: var(--olive);
             color: white;
-            padding: 20px 55px;
+            padding: 14px 42px;
             border-radius: 60px;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 1.3rem;
-            transition: all 0.4s;
-            box-shadow: 0 15px 30px rgba(44, 95, 45, 0.3);
-            border: none;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            border: 2px solid var(--gold);
-            letter-spacing: 0.5px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: 1px solid var(--olive);
+            transition: var(--transition);
         }
 
         .cta-button:hover {
-            transform: translateY(-6px) scale(1.02);
-            box-shadow: 0 25px 40px rgba(44, 95, 45, 0.4);
-            background: linear-gradient(145deg, var(--pink), #d69b8c);
-            border-color: var(--primary-green);
-            color: var(--dark-gray);
+            background: transparent;
+            color: var(--olive);
         }
 
-        .cta-button::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(145deg, rgba(255,255,255,0.3), rgba(255,255,255,0));
-            transform: translateX(-100%);
-            transition: transform 0.6s;
-        }
-
-        .cta-button:hover::after {
-            transform: translateX(100%);
-        }
-
+        /* section titles */
         .section-title {
             text-align: center;
-            margin-bottom: 60px;
-            position: relative;
+            margin-bottom: 48px;
         }
 
         .section-title h2 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3.2rem;
-            color: var(--text-heading);
-            margin-bottom: 20px;
+            font-size: 2.3rem;
+            font-weight: 500;
+            color: var(--text-dark);
             display: inline-block;
-        }
-
-        .section-title h2::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-green), var(--pink));
-            margin: 15px auto;
-            border-radius: 4px;
+            border-bottom: 2px solid var(--accent-warm);
+            padding-bottom: 8px;
         }
 
         .section-title p {
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-            font-size: 1.2rem;
+            color: var(--text-soft);
+            margin-top: 12px;
+            font-size: 1.1rem;
         }
 
+        /* products – smaller cards */
         .products-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-            margin-bottom: 100px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            margin-bottom: 80px;
         }
 
         .product-card {
-            background-color: var(--bg-card);
-            border-radius: var(--border-radius);
+            background: var(--card-bg);
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: var(--box-shadow);
-            transition: all 0.4s;
-            position: relative;
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--border-light);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
         }
 
         .product-card:hover {
-            transform: translateY(-18px);
-            box-shadow: var(--box-shadow-hover);
-            border-color: var(--pink);
-        }
-
-        .product-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 6px;
-            background: linear-gradient(90deg, var(--primary-green), var(--pink), var(--gold));
+            box-shadow: var(--shadow-sm);
+            transform: translateY(-4px);
+            border-color: var(--accent-warm);
         }
 
         .product-image {
-            height: 280px;
+            height: 180px;
             overflow: hidden;
-            background: var(--beige);
+            background: #faf8f6;
         }
 
         .product-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.8s;
+            transition: transform 0.4s;
         }
 
         .product-card:hover .product-image img {
-            transform: scale(1.08);
+            transform: scale(1.03);
         }
 
         .product-info {
-            padding: 30px 25px;
+            padding: 18px 16px 20px;
             text-align: center;
         }
 
         .product-info h3 {
-            font-size: 1.7rem;
-            color: var(--text-heading);
-            margin-bottom: 15px;
-            font-weight: 700;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text-dark);
         }
 
         .product-size {
             display: inline-block;
-            background: var(--light-green);
-            color: var(--dark-gray);
-            padding: 8px 25px;
+            background: #f1eee9;
+            color: var(--text-soft);
+            padding: 4px 16px;
             border-radius: 40px;
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-            border: 1px solid var(--gold);
-            letter-spacing: 0.5px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: 0.3px;
         }
 
         .product-description {
-            color: var(--text-secondary);
-            margin-bottom: 25px;
-            line-height: 1.8;
-            min-height: 70px;
-            font-size: 0.98rem;
+            color: var(--text-soft);
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+            min-height: 60px;
+            line-height: 1.5;
         }
 
         .product-price {
-            font-size: 2.2rem;
-            color: var(--primary-green);
-            font-weight: 800;
-            margin: 20px 0;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--olive);
+            margin: 8px 0 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 4px;
         }
 
         .price-number {
-            font-size: 2.4rem;
-            font-weight: 900;
+            font-size: 1.8rem;
         }
 
         .price-currency {
-            font-size: 1.2rem;
-            color: var(--gold);
-            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--accent-warm);
         }
 
         .add-to-cart {
-            display: block;
-            width: 100%;
-            background: linear-gradient(145deg, var(--primary-green), var(--dark-green));
-            color: white;
-            border: none;
-            padding: 18px;
+            background: transparent;
+            border: 1px solid var(--border-light);
+            color: var(--text-dark);
+            font-weight: 600;
+            padding: 12px 20px;
             border-radius: 60px;
-            font-size: 1.2rem;
-            font-weight: 700;
+            width: 100%;
             cursor: pointer;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-            border: 2px solid var(--pink);
-            box-shadow: 0 8px 18px rgba(44, 95, 45, 0.2);
-            margin-top: 10px;
+            transition: var(--transition);
+            font-size: 0.9rem;
         }
 
         .add-to-cart:hover {
-            background: linear-gradient(145deg, var(--pink), #c9897a);
-            transform: translateY(-4px);
-            box-shadow: 0 15px 25px rgba(231, 178, 165, 0.3);
-            color: var(--dark-gray);
+            background: var(--olive);
+            color: white;
+            border-color: var(--olive);
         }
 
+        /* about minimal */
         .about {
-            background: var(--bg-secondary);
-            padding: 100px 0;
-            margin-bottom: 100px;
-            position: relative;
-            overflow: hidden;
-            border-top: 2px solid var(--border-color);
-            border-bottom: 2px solid var(--border-color);
-            box-shadow: inset 0 0 40px rgba(151, 181, 150, 0.1);
-        }
-
-        .about::before {
-            content: '';
-            position: absolute;
-            top: -60px;
-            left: -60px;
-            width: 250px;
-            height: 250px;
-            background-color: var(--light-green);
-            border-radius: 50%;
-            opacity: 0.15;
-        }
-
-        .about::after {
-            content: '';
-            position: absolute;
-            bottom: -60px;
-            right: -60px;
-            width: 200px;
-            height: 200px;
-            background-color: var(--pink);
-            border-radius: 50%;
-            opacity: 0.15;
+            padding: 70px 0;
+            background: white;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
         }
 
         .about-content {
             display: flex;
             align-items: center;
-            gap: 60px;
-            position: relative;
-            z-index: 1;
+            gap: 50px;
         }
 
         .about-text {
@@ -522,596 +375,432 @@
         }
 
         .about-text h2 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3.5rem;
-            color: var(--text-heading);
-            margin-bottom: 30px;
-            line-height: 1.2;
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: var(--olive);
+            margin-bottom: 20px;
         }
 
         .about-text p {
-            margin-bottom: 25px;
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            line-height: 1.9;
+            color: var(--text-soft);
+            margin-bottom: 20px;
+            font-size: 1rem;
         }
 
         .about-image {
             flex: 1;
-            border-radius: var(--border-radius);
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 30px 45px -15px rgba(44, 95, 45, 0.3);
-            border: 12px solid var(--light-beige);
+            border: 1px solid var(--border-light);
         }
 
         .about-image img {
             width: 100%;
             height: auto;
             display: block;
-            transition: transform 0.8s;
         }
 
-        .about-image:hover img {
-            transform: scale(1.03);
-        }
-
+        /* contact form */
         .contact {
-            margin-bottom: 100px;
+            padding: 70px 0;
         }
 
         .contact-form {
-            max-width: 750px;
+            max-width: 700px;
             margin: 0 auto;
-            background-color: var(--bg-secondary);
-            padding: 55px 50px;
-            border-radius: var(--border-radius);
-            box-shadow: 0 25px 50px -12px rgba(44, 95, 45, 0.2);
-            position: relative;
-            border: 2px solid var(--border-color);
-        }
-
-        .contact-form::before {
-            content: '';
-            position: absolute;
-            top: -12px;
-            left: -12px;
-            right: -12px;
-            bottom: -12px;
-            background: linear-gradient(145deg, var(--light-green), var(--pink));
-            border-radius: calc(var(--border-radius) + 12px);
-            z-index: -1;
-            opacity: 0.3;
+            background: white;
+            padding: 40px 40px;
+            border-radius: 24px;
+            border: 1px solid var(--border-light);
         }
 
         .form-group {
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 10px;
-            color: var(--text-heading);
-            font-weight: 700;
-            font-size: 1.1rem;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 0.9rem;
         }
 
         .form-control {
             width: 100%;
-            padding: 16px 20px;
-            border: 2px solid var(--border-color);
+            padding: 12px 18px;
+            border: 1px solid var(--border-light);
             border-radius: 50px;
-            font-size: 1rem;
-            transition: all 0.3s;
-            background-color: var(--bg-primary);
+            font-size: 0.95rem;
+            background: var(--light-bg);
             font-family: 'Cairo', sans-serif;
-            color: var(--text-primary);
         }
 
         .form-control:focus {
             outline: none;
-            border-color: var(--primary-green);
-            box-shadow: 0 0 0 4px rgba(44, 95, 45, 0.12);
+            border-color: var(--olive);
         }
 
         textarea.form-control {
-            min-height: 160px;
-            resize: vertical;
-            border-radius: 30px;
+            min-height: 120px;
+            border-radius: 24px;
         }
 
         .submit-btn {
-            background: linear-gradient(145deg, var(--primary-green), var(--dark-green));
+            background: var(--olive);
             color: white;
             border: none;
-            padding: 18px 45px;
+            padding: 14px 30px;
             border-radius: 60px;
-            font-size: 1.3rem;
-            font-weight: 700;
+            font-weight: 600;
+            font-size: 1.1rem;
             cursor: pointer;
-            transition: all 0.3s;
-            display: inline-block;
             width: 100%;
-            box-shadow: 0 15px 25px rgba(44, 95, 45, 0.3);
-            border: 2px solid var(--gold);
+            transition: var(--transition);
+            border: 1px solid var(--olive);
         }
 
         .submit-btn:hover {
-            background: linear-gradient(145deg, var(--pink), #ca8f7e);
-            transform: translateY(-4px);
-            color: var(--dark-gray);
+            background: transparent;
+            color: var(--olive);
         }
 
+        /* order modal */
         .order-modal {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(44, 62, 80, 0.7);
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.3);
             z-index: 2000;
-            justify-content: center;
             align-items: center;
-            padding: 20px;
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            justify-content: center;
+            padding: 16px;
         }
 
         .order-content {
-            background-color: var(--bg-secondary);
-            width: 90%;
-            max-width: 650px;
-            border-radius: var(--border-radius);
-            padding: 45px;
+            background: white;
+            max-width: 600px;
+            width: 100%;
             max-height: 90vh;
             overflow-y: auto;
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.2);
-            animation: slideUp 0.4s ease;
-            border: 2px solid var(--border-color);
-        }
-
-        @keyframes slideUp {
-            from { transform: translateY(40px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            border-radius: 24px;
+            padding: 30px;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
         }
 
         .order-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-light);
         }
 
         .order-header h2 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.8rem;
-            color: var(--text-heading);
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: var(--olive);
         }
 
         .close-order {
             background: none;
             border: none;
-            font-size: 2.5rem;
+            font-size: 2rem;
             cursor: pointer;
-            color: var(--text-secondary);
-            transition: color 0.3s;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .close-order:hover {
-            color: var(--pink);
-            background-color: var(--bg-primary);
+            color: var(--text-soft);
+            line-height: 1;
         }
 
         .order-items {
-            margin-bottom: 30px;
-            max-height: 250px;
+            max-height: 300px;
             overflow-y: auto;
-            padding-right: 10px;
-        }
-
-        .order-items::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .order-items::-webkit-scrollbar-track {
-            background: var(--beige);
-            border-radius: 10px;
-        }
-
-        .order-items::-webkit-scrollbar-thumb {
-            background: var(--primary-green);
-            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 8px;
         }
 
         .order-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
-            border-bottom: 1px solid var(--border-color);
+            padding: 12px 8px;
+            border-bottom: 1px dashed var(--border-light);
         }
 
         .order-item:last-child {
             border-bottom: none;
         }
 
+        .order-item-info {
+            flex: 2;
+        }
+
         .order-item-info h4 {
-            color: var(--text-heading);
-            margin-bottom: 8px;
-            font-size: 1.3rem;
+            font-size: 1rem;
+            margin-bottom: 4px;
         }
 
         .order-item-info p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
+            font-size: 0.8rem;
+            color: var(--text-soft);
+        }
+
+        .order-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .qty-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid var(--border-light);
+            background: white;
+            color: var(--text-dark);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .qty-btn:hover {
+            background: var(--olive);
+            color: white;
+            border-color: var(--olive);
+        }
+
+        .qty-display {
+            font-weight: 600;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        .delete-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid #ffcdd2;
+            background: #ffebee;
+            color: #c62828;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            margin-left: 4px;
+        }
+
+        .delete-btn:hover {
+            background: #c62828;
+            color: white;
+            border-color: #c62828;
         }
 
         .order-item-price {
-            color: var(--primary-green);
-            font-weight: 800;
-            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--olive);
+            min-width: 70px;
+            text-align: left;
         }
 
         .order-total {
-            text-align: right;
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--primary-green);
-            margin-bottom: 30px;
-            padding-top: 20px;
-            border-top: 2px solid var(--border-color);
-        }
-
-        .order-form {
-            margin-top: 20px;
-        }
-
-        .form-row {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 25px;
-        }
-
-        .form-row .form-group {
-            flex: 1;
-            margin-bottom: 0;
+            text-align: left;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 20px 0 16px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border-light);
         }
 
         .cart-actions {
             display: flex;
-            gap: 15px;
-            margin-bottom: 25px;
+            gap: 12px;
+            margin: 20px 0;
         }
 
         .clear-cart-btn {
-            background: linear-gradient(145deg, #E7B2A5, #d29485);
-            color: #2C3E4F;
+            background: #f1eee9;
             border: none;
-            padding: 15px 25px;
+            padding: 12px 20px;
             border-radius: 60px;
-            font-size: 1rem;
-            font-weight: 700;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
-            flex: 1;
-            box-shadow: 0 10px 15px rgba(231, 178, 165, 0.3);
-            border: 2px solid var(--primary-green);
+            width: 100%;
+            color: var(--text-dark);
         }
 
         .clear-cart-btn:hover {
-            transform: translateY(-4px);
-            background: var(--pink);
-            color: var(--dark-gray);
+            background: #e4dbd1;
         }
 
         .order-actions {
             display: flex;
-            justify-content: space-between;
-            gap: 15px;
-            margin-top: 30px;
+            gap: 16px;
+            margin-top: 24px;
         }
 
         .order-actions .cta-button {
             flex: 1;
             text-align: center;
-            padding: 16px 10px;
-            font-size: 1.2rem;
+            font-size: 1rem;
+            padding: 12px 16px;
         }
 
-        .alert {
-            padding: 20px 25px;
-            border-radius: 60px;
-            margin-bottom: 25px;
-            display: none;
+        .form-message {
             text-align: center;
-            font-weight: 700;
-            animation: fadeIn 0.5s ease;
-            background-color: var(--bg-primary);
-            border: 2px solid var(--border-color);
-            font-size: 1.1rem;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 60px;
+            font-weight: 500;
+            background: #f5f2ee;
+            border: 1px solid var(--border-light);
+            display: none;
         }
-
-        .alert-success {
-            background-color: rgba(44, 95, 45, 0.1);
-            color: var(--primary-green);
-            border-color: var(--primary-green);
+        .form-message.success {
+            background: #e4f0e1;
+            color: #2d5a2c;
+            display: block;
         }
-
-        .alert-error {
-            background-color: rgba(231, 178, 165, 0.2);
-            color: #b04537;
-            border-color: var(--pink);
+        .form-message.error {
+            background: #ffe8e5;
+            color: #b35f4b;
+            display: block;
         }
 
         .loading {
             display: none;
             text-align: center;
-            padding: 20px;
-            color: var(--primary-green);
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-
-        .loading i {
-            margin-left: 10px;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            padding: 15px;
         }
 
         footer {
             background: var(--footer-bg);
-            color: var(--light-beige);
-            padding: 70px 0 30px;
-            position: relative;
-            overflow: hidden;
-            border-top: 2px solid var(--gold);
-        }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 6px;
-            background: linear-gradient(90deg, var(--gold), var(--pink), var(--light-green));
+            padding: 50px 0 30px;
+            border-top: 1px solid var(--border-light);
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 50px;
-            margin-bottom: 50px;
-        }
-
-        .footer-logo {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
         }
 
         .footer-logo img {
-            max-height: 80px;
-            margin-bottom: 20px;
+            height: 60px;
             border-radius: 50%;
-            background-color: var(--light-beige);
-            padding: 6px;
-            border: 3px solid var(--gold);
+            margin-bottom: 16px;
         }
 
         .footer-logo p {
-            color: rgba(255, 250, 240, 0.9);
-            line-height: 1.8;
-            margin-bottom: 25px;
-            font-size: 1rem;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 15px;
+            color: var(--text-soft);
+            font-size: 0.9rem;
         }
 
         .social-icon {
-            display: flex;
+            display: inline-flex;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
             align-items: center;
             justify-content: center;
-            width: 48px;
-            height: 48px;
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            color: white;
+            color: var(--olive);
             text-decoration: none;
-            transition: all 0.3s;
-            font-size: 1.3rem;
-            border: 2px solid var(--pink);
+            border: 1px solid var(--border-light);
+            transition: var(--transition);
+        }
+        .social-icon:hover { background: var(--olive); color: white; }
+
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { text-decoration: none; color: var(--text-soft); display: flex; align-items: center; gap: 8px; }
+        .footer-links a:hover { color: var(--olive); }
+
+        .footer-contact p { display: flex; align-items: center; gap: 10px; color: var(--text-soft); margin-bottom: 10px; }
+        .copyright { text-align: center; color: var(--text-soft); border-top: 1px solid var(--border-light); padding-top: 20px; font-size: 0.85rem; }
+
+        /* responsive */
+        @media (min-width: 769px) {
+            nav { order: 0; width: auto; margin-top: 0; border-top: none; padding-top: 0; }
+            .logo { position: static; }
         }
 
-        .social-icon:hover {
-            background-color: var(--pink);
-            transform: translateY(-6px);
-            color: var(--dark-gray);
-        }
-
-        .footer-links h3,
-        .footer-contact h3 {
-            font-size: 1.5rem;
-            margin-bottom: 25px;
-            color: var(--light-beige);
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-links h3::after,
-        .footer-contact h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background-color: var(--pink);
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 15px;
-        }
-
-        .footer-links a {
-            color: rgba(255, 250, 240, 0.9);
-            text-decoration: none;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .footer-links a:hover {
-            color: var(--pink);
-            transform: translateX(8px);
-        }
-
-        .footer-contact p {
-            color: rgba(255, 250, 240, 0.9);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .footer-contact i {
-            color: var(--pink);
-            width: 20px;
-            font-size: 1.2rem;
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 2px solid rgba(255, 255, 255, 0.15);
-            color: rgba(255, 250, 240, 0.8);
-            font-size: 0.95rem;
-        }
-
-        @media (max-width: 992px) {
-            .header-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-            .language-switcher {
-                margin-left: 0;
-                margin-top: 10px;
-            }
-            .hero { padding: 100px 0; min-height: 70vh; }
-            .hero h2 { font-size: 3.2rem; }
-            .hero p { font-size: 1.2rem; }
+        @media (max-width: 600px) {
+            .hero h2 { font-size: 2.2rem; }
+            .products-container { grid-template-columns: 1fr 1fr; gap: 16px; }
+            .product-image { height: 150px; }
+            .product-info { padding: 14px; }
+            .product-price { font-size: 1.4rem; }
+            .price-number { font-size: 1.5rem; }
             .about-content { flex-direction: column; }
-            .form-row { flex-direction: column; gap: 0; }
-            .order-actions { flex-direction: column; }
-        }
-
-        @media (max-width: 768px) {
-            nav ul { flex-wrap: wrap; justify-content: center; gap: 15px; }
-            .hero { padding: 80px 0; background-attachment: scroll; }
-            .hero h2 { font-size: 2.8rem; }
-            .hero p { font-size: 1.1rem; }
-            .hero-content { padding: 40px 20px; }
-            .section-title h2 { font-size: 2.7rem; }
-            .contact-form { padding: 35px 20px; }
-            .order-content { padding: 30px 20px; }
-        }
-
-        @media (max-width: 480px) {
-            .hero { padding: 60px 0; }
-            .hero h2 { font-size: 2.3rem; }
-            .hero p { font-size: 1rem; }
-            .cta-button { padding: 16px 35px; font-size: 1.1rem; }
-            .products-container { grid-template-columns: 1fr; }
-            .footer-content { grid-template-columns: 1fr; text-align: center; }
-            .footer-logo { align-items: center; }
-            .social-icons { justify-content: center; }
-            .footer-links h3::after, .footer-contact h3::after { left: 50%; transform: translateX(-50%); }
         }
     </style>
 </head>
-<body class="">
+<body>
     <header>
         <div class="container header-container">
             <div class="logo">
-                <img src="DARNA (2)-artguru.png" alt="DARNA Olive Oil Logo">
-                <div class="logo-text">
-                    <p data-ar="زيت زيتون فاخر من قلب المغرب" data-en="Premium olive oil from the heart of Morocco">زيت زيتون فاخر من قلب المغرب</p>
-                </div>
+                <img src="DARNA (2)-artguru.png" alt="DARNA">
+                <p data-ar="زيت زيتون فاخر من المغرب" data-en="Premium Moroccan olive oil">زيت زيتون فاخر من المغرب</p>
             </div>
             <nav>
                 <ul>
                     <li><a href="#home" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
                     <li><a href="#products" data-ar="المنتجات" data-en="Products">المنتجات</a></li>
                     <li><a href="#about" data-ar="قصتنا" data-en="Our Story">قصتنا</a></li>
-                    <li><a href="#contact" data-ar="اتصل بنا" data-en="Contact Us">اتصل بنا</a></li>
+                    <li><a href="#contact" data-ar="اتصل بنا" data-en="Contact">اتصل بنا</a></li>
                 </ul>
             </nav>
-            <div class="language-switcher">
-                <button class="language-btn active" id="lang-ar"><i class="fas fa-language"></i> العربية</button>
-                <button class="language-btn" id="lang-en"><i class="fas fa-language"></i> English</button>
-            </div>
-            <div class="cart-icon" id="cart-button">
-                <i class="fas fa-shopping-cart"></i>
-                <span class="cart-count">0</span>
+            <div class="header-actions">
+                <div class="language-switcher">
+                    <button class="language-btn active" id="lang-ar">عربي</button>
+                    <button class="language-btn" id="lang-en">EN</button>
+                </div>
+                <div class="cart-icon" id="cart-button">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </div>
             </div>
         </div>
     </header>
 
     <section class="hero" id="home">
         <div class="container hero-content">
-            <h2 data-ar="تجربة فاخرة من الطبيعة المغربية" data-en="A Luxurious Experience from Moroccan Nature">تجربة فاخرة من الطبيعة المغربية</h2>
-            <p data-ar="زيت زيتون عائلي مصنوع بأيدي مغربية خبيرة، يجمع بين التقاليد الأصيلة والجودة العالمية. منتجنا هو ثمرة سنوات من الخبرة والعناية." data-en="Family-made olive oil crafted by expert Moroccan hands, combining authentic traditions with global quality. Our product is the fruit of years of experience and care.">زيت زيتون عائلي مصنوع بأيدي مغربية خبيرة، يجمع بين التقاليد الأصيلة والجودة العالمية. منتجنا هو ثمرة سنوات من الخبرة والعناية.</p>
-            <a href="#products" class="cta-button" data-ar="اكتشف منتجاتنا" data-en="Discover Our Products">اكتشف منتجاتنا</a>
+            <h2 data-ar="نقاء الطبيعة المغربية" data-en="Pure Moroccan nature">نقاء الطبيعة المغربية</h2>
+            <p data-ar="زيت زيتون عائلي بكر ممتاز من وزان" data-en="Family extra virgin olive oil from Ouazzane">زيت زيتون عائلي بكر ممتاز من وزان</p>
+            <a href="#products" class="cta-button" data-ar="اكتشف" data-en="Discover">اكتشف</a>
         </div>
     </section>
 
     <section id="products">
         <div class="container">
             <div class="section-title">
-                <h2 data-ar="منتجاتنا الفاخرة" data-en="Our Premium Products">منتجاتنا الفاخرة</h2>
-                <p data-ar="اختر من بين تشكيلتنا المميزة من زيت الزيتون المغربي الأصيل، المعصور بعناية فائقة" data-en="Choose from our distinctive collection of authentic Moroccan olive oil, carefully pressed">اختر من بين تشكيلتنا المميزة من زيت الزيتون المغربي الأصيل، المعصور بعناية فائقة</p>
+                <h2 data-ar="منتجاتنا" data-en="Our Products">منتجاتنا</h2>
+                <p data-ar="نكهة أصيلة في كل زجاجة" data-en="Authentic taste in every bottle">نكهة أصيلة في كل زجاجة</p>
             </div>
             <div class="products-container" id="products-container"></div>
         </div>
     </section>
 
     <section class="about" id="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2 data-ar="قصتنا" data-en="Our Story">قصتنا</h2>
+        <div class="container about-content">
+            <div class="about-text">
+                <h2 data-ar="قصتنا" data-en="Our Story">قصتنا</h2>
                     <p data-ar="أهلاً بكم في دارنا، حيث تتجسَّد الروح الأصيلة والتاريخ العريق في كل قطرة زيت." data-en="Welcome to DARNA, where authentic spirit and ancient history are embodied in every drop of oil.">أهلاً بكم في دارنا، حيث تتجسَّد الروح الأصيلة والتاريخ العريق في كل قطرة زيت.</p>
                     <p data-ar="دارنا هو حكاية عائلة مغربية دأبت على إنتاج زيت الزيتون منذ عقود في أرض وزان العريقة، منطقة الخصوبة والأصالة. جذورنا تمتد في أرض المغرب الطيبة، وقلوبنا تنبض بحب هذه الشجرة المباركة." data-en="DARNA is the story of a Moroccan family that has been producing olive oil for decades in the ancestral land of Ouazzane, a region of fertility and authenticity. Our roots extend in the generous land of Morocco, and our hearts beat with love for this blessed tree.">دارنا هو حكاية عائلة مغربية دأبت على إنتاج زيت الزيتون منذ عقود في أرض وزان العريقة، منطقة الخصوبة والأصالة. جذورنا تمتد في أرض المغرب الطيبة، وقلوبنا تنبض بحب هذه الشجرة المباركة.</p>
                     <p data-ar="نحن نؤمن بأن الجودة تبدأ من الشجرة وصولاً إلى الزجاجة. لذلك نرعى أشجارنا بعناية فائقة، ونقطف ثمارها في الوقت المثالي لنضمن أعلى مستوى من النقاء والطعم." data-en="We believe that quality starts from the tree all the way to the bottle. Therefore, we carefully nurture our trees and harvest their fruits at the optimal time to ensure the highest level of purity and taste.">نحن نؤمن بأن الجودة تبدأ من الشجرة وصولاً إلى الزجاجة. لذلك نرعى أشجارنا بعناية فائقة، ونقطف ثمارها في الوقت المثالي لنضمن أعلى مستوى من النقاء والطعم.</p>
                     <p data-ar="زيت دارنا هو ليس مجرد منتج، بل هو جزء من هويتنا المغربية وتراثنا العائلي الذي نفخر بمشاركته معكم، صنع في وزان العريقة، بإتقان وأصالة." data-en="DARNA oil is not just a product, but a part of our Moroccan identity and family heritage that we are proud to share with you, made in ancient Ouazzane, with mastery and authenticity.">زيت دارنا هو ليس مجرد منتج، بل هو جزء من هويتنا المغربية وتراثنا العائلي الذي نفخر بمشاركته معكم، صنع في وزان العريقة، بإتقان وأصالة.</p>
-                </div>
-                <div class="about-image">
-                    <img src="darna (8).png" alt="DARNA Story">
-                </div>
+            </div>
+            <div class="about-image">
+                <img src="darna (8).png" alt="DARNA story" onerror="this.src='https://images.unsplash.com/photo-1533050487297-09b450131914?w=600'">
             </div>
         </div>
     </section>
@@ -1120,72 +809,107 @@
         <div class="container">
             <div class="section-title">
                 <h2 data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</h2>
-                <p data-ar="نحن هنا للإجابة على استفساراتكم وتلقي طلباتكم الخاصة" data-en="We are here to answer your inquiries and receive your special orders">نحن هنا للإجابة على استفساراتكم وتلقي طلباتكم الخاصة</p>
+                <p data-ar="نحن هنا للإجابة عن استفساراتكم" data-en="We're here for your inquiries">نحن هنا للإجابة عن استفساراتكم</p>
             </div>
             <form class="contact-form" id="contact-form">
-                <div class="alert" id="contact-alert"></div>
-                <div class="loading" id="contact-loading"><i class="fas fa-spinner"></i> <span data-ar="جاري إرسال رسالتك..." data-en="Sending your message...">جاري إرسال رسالتك...</span></div>
-                <div class="form-group"><label for="name" data-ar="الاسم الكامل *" data-en="Full Name *">الاسم الكامل *</label><input type="text" id="name" class="form-control" required></div>
-                <div class="form-group"><label for="email" data-ar="البريد الإلكتروني *" data-en="Email Address *">البريد الإلكتروني *</label><input type="email" id="email" class="form-control" required></div>
+                <div class="form-message" id="contact-message"></div>
+                <div class="loading" id="contact-loading"><i class="fas fa-spinner fa-spin"></i> <span data-ar="جاري الإرسال" data-en="Sending...">جاري الإرسال</span></div>
+                <div class="form-group"><label for="name" data-ar="الاسم *" data-en="Name *">الاسم *</label><input type="text" id="name" class="form-control" required></div>
+                <div class="form-group"><label for="email" data-ar="البريد الإلكتروني *" data-en="Email *">البريد الإلكتروني *</label><input type="email" id="email" class="form-control" required></div>
                 <div class="form-group"><label for="subject" data-ar="الموضوع *" data-en="Subject *">الموضوع *</label><input type="text" id="subject" class="form-control" required></div>
                 <div class="form-group"><label for="message" data-ar="الرسالة *" data-en="Message *">الرسالة *</label><textarea id="message" class="form-control" required></textarea></div>
-                <button type="submit" class="submit-btn" data-ar="إرسال الرسالة" data-en="Send Message">إرسال الرسالة</button>
+                <button type="submit" class="submit-btn" data-ar="إرسال" data-en="Send">إرسال</button>
             </form>
         </div>
     </section>
 
+    <!-- Order Modal -->
     <div class="order-modal" id="order-modal">
         <div class="order-content">
-            <div class="order-header"><h2 data-ar="سلة المشتريات" data-en="Shopping Cart">سلة المشتريات</h2><button class="close-order" id="close-order">&times;</button></div>
-            <div class="alert" id="order-alert"></div>
-            <div class="loading" id="order-loading"><i class="fas fa-spinner"></i> <span data-ar="جاري إرسال طلبك..." data-en="Sending your order...">جاري إرسال طلبك...</span></div>
+            <div class="order-header">
+                <h2 data-ar="سلة التسوق" data-en="Shopping Cart">سلة التسوق</h2>
+                <button class="close-order" id="close-order">&times;</button>
+            </div>
+            <div class="form-message" id="order-message"></div>
+            <div class="loading" id="order-loading"><i class="fas fa-spinner fa-spin"></i> <span data-ar="جاري الإرسال" data-en="Sending...">جاري الإرسال</span></div>
             <div class="order-items" id="order-items"></div>
-            <div class="order-total"><span data-ar="المجموع الكلي:" data-en="Total:"></span> <span id="order-total">0.00</span> <span data-ar="درهم" data-en="DH">درهم</span></div>
-            <div class="cart-actions"><button class="clear-cart-btn" id="clear-cart-btn"><i class="fas fa-trash-alt"></i> <span data-ar="إفراغ السلة" data-en="Clear Cart">إفراغ السلة</span></button></div>
+            <div class="order-total">
+                <span data-ar="المجموع:" data-en="Total:"></span> 
+                <span id="order-total">0.00</span> 
+                <span data-ar="درهم" data-en="DH">درهم</span>
+            </div>
+            <div class="cart-actions">
+                <button class="clear-cart-btn" id="clear-cart-btn">
+                    <i class="fas fa-trash-alt"></i> 
+                    <span data-ar="إفراغ السلة" data-en="Clear Cart">إفراغ السلة</span>
+                </button>
+            </div>
             <form class="order-form" id="order-form">
-                <div class="form-row"><div class="form-group"><label for="order-name" data-ar="الاسم الكامل *" data-en="Full Name *">الاسم الكامل *</label><input type="text" id="order-name" class="form-control" required></div><div class="form-group"><label for="order-phone" data-ar="رقم الهاتف *" data-en="Phone Number *">رقم الهاتف *</label><input type="tel" id="order-phone" class="form-control" required></div></div>
-                <div class="form-row"><div class="form-group"><label for="order-email" data-ar="البريد الإلكتروني *" data-en="Email Address *">البريد الإلكتروني *</label><input type="email" id="order-email" class="form-control" required></div><div class="form-group"><label for="order-address" data-ar="العنوان *" data-en="Address *">العنوان *</label><input type="text" id="order-address" class="form-control" required></div></div>
-                <div class="form-group"><label for="order-notes" data-ar="ملاحظات إضافية (اختياري)" data-en="Additional Notes (optional)">ملاحظات إضافية (اختياري)</label><textarea id="order-notes" class="form-control" rows="3" data-ar-placeholder="مثلاً: وقت التوصيل المفضل أو أي طلبات خاصة" data-en-placeholder="E.g.: Preferred delivery time or any special requests"></textarea></div>
-                <div class="order-actions"><button type="button" class="cta-button" id="continue-shopping" data-ar="متابعة التسوق" data-en="Continue Shopping">متابعة التسوق</button><button type="submit" class="cta-button" id="confirm-order" data-ar="تأكيد الطلب" data-en="Confirm Order">تأكيد الطلب</button></div>
+                <div class="form-group"><label for="order-name" data-ar="الاسم الكامل *" data-en="Full name *">الاسم الكامل *</label><input type="text" id="order-name" class="form-control" required></div>
+                <div class="form-group"><label for="order-phone" data-ar="رقم الهاتف *" data-en="Phone number *">رقم الهاتف *</label><input type="tel" id="order-phone" class="form-control" required></div>
+                <div class="form-group"><label for="order-email" data-ar="البريد الإلكتروني *" data-en="Email *">البريد الإلكتروني *</label><input type="email" id="order-email" class="form-control" required></div>
+                <div class="form-group"><label for="order-address" data-ar="العنوان *" data-en="Address *">العنوان *</label><input type="text" id="order-address" class="form-control" required></div>
+                <div class="form-group"><label for="order-notes" data-ar="ملاحظات (اختياري)" data-en="Notes (optional)">ملاحظات (اختياري)</label><textarea id="order-notes" class="form-control" rows="2"></textarea></div>
+                <div class="order-actions">
+                    <button type="button" class="cta-button" id="continue-shopping" data-ar="متابعة التسوق" data-en="Continue">متابعة التسوق</button>
+                    <button type="submit" class="cta-button" id="confirm-order" data-ar="تأكيد الطلب" data-en="Confirm Order">تأكيد الطلب</button>
+                </div>
             </form>
         </div>
     </div>
 
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo"><img src="DARNA (2)-artguru.png" alt="DARNA Logo"><p data-ar="زيت زيتون مغربي فاخر، يروي قصة أرض طيبة وأيدي خبيرة تعتني بكل تفصيلة." data-en="Premium Moroccan olive oil, telling the story of a generous land and expert hands that care for every detail.">زيت زيتون مغربي فاخر، يروي قصة أرض طيبة وأيدي خبيرة تعتني بكل تفصيلة.</p><div class="social-icons"><a href="https://www.instagram.com/darna.oil/" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a></div></div>
-                <div class="footer-links"><h3 data-ar="روابط سريعة" data-en="Quick Links">روابط سريعة</h3><ul><li><a href="#home"><i class="fas fa-home"></i> <span data-ar="الرئيسية" data-en="Home">الرئيسية</span></a></li><li><a href="#products"><i class="fas fa-shopping-bag"></i> <span data-ar="المنتجات" data-en="Products">المنتجات</span></a></li><li><a href="#about"><i class="fas fa-book-open"></i> <span data-ar="قصتنا" data-en="Our Story">قصتنا</span></a></li><li><a href="#contact"><i class="fas fa-envelope"></i> <span data-ar="اتصل بنا" data-en="Contact Us">اتصل بنا</span></a></li></ul></div>
-                <div class="footer-contact"><h3 data-ar="معلومات الاتصال" data-en="Contact Information">معلومات الاتصال</h3><p><i class="fas fa-map-marker-alt"></i> <span data-ar="طنجة، المغرب" data-en="Tangier, Morocco">طنجة، المغرب</span></p><p><i class="fas fa-phone"></i> 0723096351</p><p><i class="fas fa-envelope"></i> nouhailaabbassi014@gmail.com</p><p><i class="fas fa-clock"></i> <span data-ar="الأحد - الجمعة: 9:00 - 18:00" data-en="Sunday - Friday: 9:00 - 18:00">الأحد - الجمعة: 9:00 - 18:00</span></p></div>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <img src="DARNA (2)-artguru.png" alt="DARNA">
+                <p data-ar="نقاء و تقاليد" data-en="Purity & tradition">نقاء و نكهة</p>
+                <a href="https://www.instagram.com/darna.oil/" class="social-icon"><i class="fab fa-instagram"></i></a>
             </div>
-            <div class="copyright"><p data-ar="&copy; 2026 دارنا لزيت الزيتون الفاخر. جميع الحقوق محفوظة." data-en="&copy; 2026 DARNA Premium Olive Oil. All rights reserved.">&copy; 2026 دارنا لزيت الزيتون الفاخر. جميع الحقوق محفوظة.</p></div>
+            <div class="footer-links">
+                <h3 data-ar="روابط سريعة" data-en="Quick Links">روابط سريعة</h3>
+                <ul>
+                    <li><a href="#home"><i class="fas fa-home"></i> <span data-ar="الرئيسية" data-en="Home">الرئيسية</span></a></li>
+                    <li><a href="#products"><i class="fas fa-shopping-bag"></i> <span data-ar="المنتجات" data-en="Products">المنتجات</span></a></li>
+                    <li><a href="#about"><i class="fas fa-book-open"></i> <span data-ar="قصتنا" data-en="Our Story">قصتنا</span></a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> <span data-ar="اتصل بنا" data-en="Contact">اتصل بنا</span></a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3 data-ar="معلومات الاتصال" data-en="Contact Info">معلومات الاتصال</h3>
+                <p><i class="fas fa-map-marker-alt"></i> <span data-ar="طنجة، المغرب" data-en="Tangier, Morocco">طنجة، المغرب</span></p>
+                <p><i class="fas fa-phone"></i> 0723096351</p>
+                <p><i class="fas fa-envelope"></i> nouhailaabbassi014@gmail.com</p>
+                <p><i class="fas fa-clock"></i> <span data-ar="السبت - الخميس: 9:00 - 18:00" data-en="Sat - Thu: 9:00 - 18:00">السبت - الخميس: 9:00 - 18:00</span></p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p data-ar="© 2026 دارنا – جميع الحقوق محفوظة" data-en="© 2026 DARNA – All rights reserved">© 2026 دارنا – جميع الحقوق محفوظة</p>
         </div>
     </footer>
 
     <script>
+        // product data
         const productsData = [
-            { id: 1, nameAr: "زيت زيتون بكر ممتاز", nameEn: "Extra Virgin Premium Olive Oil", sizeAr: "500 مل", sizeEn: "500 ml", descriptionAr: "عبوة أنيقة للاستخدام اليومي، مثالية للسلطات والطهي الخفيف.", descriptionEn: "Elegant bottle for daily use, perfect for salads and light cooking.", price: 50, image: "darna (6).png" },
-            { id: 2, nameAr: "زيت زيتون عالي الجودة", nameEn: "High Quality Olive Oil", sizeAr: "750 مل", sizeEn: "750 ml", descriptionAr: "عبوة متوسطة تناسب العائلات الصغيرة، بنكهة غنية.", descriptionEn: "Medium bottle suitable for small families, with a rich flavor.", price: 70, image: "ChatGPT Image 8 févr. 2026, 00_57_04.png" },
-            { id: 3, nameAr: "زيت زيتون عائلي فاخر", nameEn: "Family Premium Olive Oil", sizeAr: "5 لتر", sizeEn: "5 L", descriptionAr: "عبوة اقتصادية للعائلات الكبيرة والمطاعم.", descriptionEn: "Economical bottle for large families and restaurants.", price: 349, image: "ChatGPT Image 8 févr. 2026, 00_53_09.png" },
-            { id: 4, nameAr: "زيت زيتون عائلي فاخر", nameEn: "Family Premium Olive Oil", sizeAr: "1 لتر", sizeEn: "1 L", descriptionAr: "عبوة اقتصادية 1 لتر", descriptionEn: "Economical 1L bottle", price: 80, image: "image_1_1769830440880.jpg" }
+            { id: 1, nameAr: "زيت زيتون بكر ممتاز", nameEn: "Extra Virgin Premium", sizeAr: "500 مل", sizeEn: "500 ml", descriptionAr: "للإستخدام اليومي، مثالي للسلطات", descriptionEn: "Daily use, perfect for salads", price: 50, image: "darna (6).png" },
+            { id: 2, nameAr: "زيت زيتون عالي الجودة", nameEn: "High Quality", sizeAr: "750 مل", sizeEn: "750 ml", descriptionAr: "نكهة غنية للعائلات", descriptionEn: "Rich flavor for families", price: 70, image: "ChatGPT Image 8 févr. 2026, 00_57_04.png" },
+            { id: 3, nameAr: "زيت زيتون عائلي", nameEn: "Family size", sizeAr: "5 لتر", sizeEn: "5 L", descriptionAr: "عبوة اقتصادية للعائلة", descriptionEn: "Economical family bottle", price: 349, image: "ChatGPT Image 8 févr. 2026, 00_53_09.png" },
+            { id: 4, nameAr: "زيت زيتون 1 لتر", nameEn: "Olive oil 1L", sizeAr: "1 لتر", sizeEn: "1 L", descriptionAr: "عبوة 1 لتر عملية", descriptionEn: "Practical 1L bottle", price: 80, image: "image_1_1769830440880.jpg" }
         ];
-
+        
         let cart = JSON.parse(localStorage.getItem('darnaCart')) || [];
         let currentLanguage = 'ar';
-        const cartCount = document.querySelector('.cart-count');
-        const cartButton = document.getElementById('cart-button');
-        const orderModal = document.getElementById('order-modal');
-        const closeOrder = document.getElementById('close-order');
-        const continueShopping = document.getElementById('continue-shopping');
-        const clearCartBtn = document.getElementById('clear-cart-btn');
         const ORDER_ENDPOINT = "https://formsubmit.co/ajax/nouhailaabbassi014@gmail.com";
         const CONTACT_ENDPOINT = "https://formspree.io/f/xzdabykk";
 
         function updateCartCount() {
-            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-            cartCount.textContent = totalItems;
+            document.querySelector('.cart-count').textContent = cart.reduce((t,i)=>t + i.quantity, 0);
         }
-
+        
+        function saveCart() {
+            localStorage.setItem('darnaCart', JSON.stringify(cart));
+            updateCartCount();
+        }
+        
         function renderProducts() {
             const container = document.getElementById('products-container');
             container.innerHTML = '';
@@ -1193,132 +917,299 @@
                 const card = document.createElement('div');
                 card.className = 'product-card';
                 card.innerHTML = `
-                    <div class="product-image"><img src="${p.image}" alt="${p.nameAr}" onerror="this.src='https://images.unsplash.com/photo-1533050487297-09b450131914?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80'"></div>
+                    <div class="product-image"><img src="${p.image}" alt="" onerror="this.src='https://images.unsplash.com/photo-1533050487297-09b450131914?w=300'"></div>
                     <div class="product-info">
-                        <h3>${currentLanguage === 'ar' ? p.nameAr : p.nameEn}</h3>
-                        <span class="product-size">${currentLanguage === 'ar' ? p.sizeAr : p.sizeEn}</span>
-                        <p class="product-description">${currentLanguage === 'ar' ? p.descriptionAr : p.descriptionEn}</p>
-                        <div class="product-price"><span class="price-number">${p.price.toFixed(2)}</span><span class="price-currency">${currentLanguage === 'ar' ? 'درهم' : 'DH'}</span></div>
-                        <button class="add-to-cart" data-id="${p.id}"><i class="fas fa-cart-plus"></i> <span>${currentLanguage === 'ar' ? 'أضف إلى السلة' : 'Add to Cart'}</span></button>
+                        <h3>${currentLanguage==='ar'?p.nameAr:p.nameEn}</h3>
+                        <span class="product-size">${currentLanguage==='ar'?p.sizeAr:p.sizeEn}</span>
+                        <p class="product-description">${currentLanguage==='ar'?p.descriptionAr:p.descriptionEn}</p>
+                        <div class="product-price"><span class="price-number">${p.price.toFixed(2)}</span><span class="price-currency">${currentLanguage==='ar'?'درهم':'DH'}</span></div>
+                        <button class="add-to-cart" data-id="${p.id}"><i class="fas fa-cart-plus"></i> <span>${currentLanguage==='ar'?'أضف إلى السلة':'Add to cart'}</span></button>
                     </div>`;
                 container.appendChild(card);
             });
             document.querySelectorAll('.add-to-cart').forEach(btn => btn.addEventListener('click', addToCart));
         }
-
+        
         function addToCart(e) {
-            const id = parseInt(e.target.closest('.add-to-cart').getAttribute('data-id'));
-            const product = productsData.find(p => p.id === id);
-            const existing = cart.find(item => item.id === id);
-            existing ? existing.quantity++ : cart.push({ 
-                id: product.id, 
-                nameAr: product.nameAr, 
-                nameEn: product.nameEn, 
-                size: currentLanguage === 'ar' ? product.sizeAr : product.sizeEn,
-                price: product.price, 
-                quantity: 1 
-            });
-            localStorage.setItem('darnaCart', JSON.stringify(cart));
-            updateCartCount();
-            showTemporaryAlert(currentLanguage === 'ar' ? 'تمت الإضافة!' : 'Added!', currentLanguage === 'ar' ? `${product.nameAr} أضيف إلى السلة` : `${product.nameEn} added to cart`, 'success');
+            const id = parseInt(e.target.closest('.add-to-cart').dataset.id);
+            const product = productsData.find(p=>p.id===id);
+            const existing = cart.find(i=>i.id===id);
+            if(existing) {
+                existing.quantity++;
+            } else {
+                cart.push({
+                    id: product.id, 
+                    nameAr: product.nameAr, 
+                    nameEn: product.nameEn, 
+                    size: currentLanguage==='ar'?product.sizeAr:product.sizeEn,
+                    price: product.price, 
+                    quantity: 1
+                });
+            }
+            saveCart();
+            showMessage('order-message', currentLanguage==='ar'?'تمت الإضافة ✓':'Added ✓', 'success');
         }
-
+        
+        function updateQuantity(id, change) {
+            const item = cart.find(i => i.id === id);
+            if(item) {
+                item.quantity += change;
+                if(item.quantity <= 0) {
+                    removeItem(id);
+                } else {
+                    saveCart();
+                    renderOrderItems();
+                }
+            }
+        }
+        
+        function removeItem(id) {
+            cart = cart.filter(i => i.id !== id);
+            saveCart();
+            renderOrderItems();
+            showMessage('order-message', currentLanguage==='ar'?'تم حذف المنتج':'Item removed', 'success');
+        }
+        
         function renderOrderItems() {
             const itemsDiv = document.getElementById('order-items');
             const totalSpan = document.getElementById('order-total');
-            if (!cart.length) {
-                itemsDiv.innerHTML = `<div style="text-align:center;padding:40px;color:var(--text-secondary);"><i class="fas fa-shopping-cart" style="font-size:3rem;margin-bottom:20px;color:var(--light-green);"></i><h3>${currentLanguage === 'ar' ? 'سلة التسوق فارغة' : 'Cart is empty'}</h3><p>${currentLanguage === 'ar' ? 'أضف منتجات' : 'Add products'}</p></div>`;
-                totalSpan.textContent = '0.00'; return;
+            
+            if(!cart.length) { 
+                itemsDiv.innerHTML = '<div style="text-align:center;padding:30px;color:var(--text-soft);"><i class="fas fa-shopping-cart" style="font-size:2.5rem;margin-bottom:15px;color:var(--accent-warm);"></i><p>'+(currentLanguage==='ar'?'السلة فارغة':'Cart is empty')+'</p></div>'; 
+                totalSpan.textContent = '0.00'; 
+                return; 
             }
-            let total = 0, html = '';
+            
+            let total = 0;
+            let html = '';
+            
             cart.forEach(item => { 
-                let itotal = item.price * item.quantity; 
-                total += itotal; 
-                html += `<div class="order-item"><div class="order-item-info"><h4>${currentLanguage === 'ar' ? item.nameAr : item.nameEn}</h4><p>${item.size} • ${currentLanguage === 'ar' ? 'الكمية:' : 'Qty:'} ${item.quantity}</p></div><div class="order-item-price">${itotal.toFixed(2)} ${currentLanguage === 'ar' ? 'درهم' : 'DH'}</div></div>`;
+                let subtotal = item.price * item.quantity; 
+                total += subtotal; 
+                html += `
+                    <div class="order-item" data-id="${item.id}">
+                        <div class="order-item-info">
+                            <h4>${currentLanguage==='ar'?item.nameAr:item.nameEn}</h4>
+                            <p>${item.size}</p>
+                        </div>
+                        <div class="order-item-controls">
+                            <button class="qty-btn minus-btn" data-id="${item.id}">−</button>
+                            <span class="qty-display">${item.quantity}</span>
+                            <button class="qty-btn plus-btn" data-id="${item.id}">+</button>
+                            <button class="delete-btn" data-id="${item.id}"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                        <div class="order-item-price">${subtotal.toFixed(2)} ${currentLanguage==='ar'?'درهم':'DH'}</div>
+                    </div>`;
             });
+            
             itemsDiv.innerHTML = html;
             totalSpan.textContent = total.toFixed(2);
+            
+            // Add event listeners for quantity buttons and delete buttons
+            document.querySelectorAll('.minus-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const id = parseInt(btn.dataset.id);
+                    updateQuantity(id, -1);
+                });
+            });
+            
+            document.querySelectorAll('.plus-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const id = parseInt(btn.dataset.id);
+                    updateQuantity(id, 1);
+                });
+            });
+            
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const id = parseInt(btn.dataset.id);
+                    removeItem(id);
+                });
+            });
+        }
+        
+        function showMessage(id, msg, type) { 
+            let el = document.getElementById(id); 
+            if(!el) return;
+            el.textContent = msg; 
+            el.className = `form-message ${type}`; 
+            setTimeout(() => { el.className = 'form-message'; }, 2000); 
         }
 
-        function showAlert(elementId, message, type) {
-            const el = document.getElementById(elementId);
-            el.innerHTML = message;
-            el.className = `alert alert-${type}`;
-            el.style.display = 'block';
-        }
-
-        function showTemporaryAlert(title, message, type) {
-            const alertDiv = document.createElement('div');
-            alertDiv.className = `alert alert-${type}`;
-            alertDiv.style.cssText = `position:fixed;top:100px;${currentLanguage==='ar'?'right:20px;':'left:20px;'};z-index:3000;min-width:300px;box-shadow:0 5px 20px rgba(0,0,0,0.15);animation:slideInRight 0.3s ease;background:var(--bg-card);border:2px solid var(--border-color);color:var(--text-primary);`;
-            alertDiv.innerHTML = `<strong>${title}</strong><p style="margin:5px 0 0;">${message}</p>`;
-            document.body.appendChild(alertDiv);
-            setTimeout(() => { alertDiv.remove(); }, 3000);
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            renderProducts(); updateCartCount();
-            document.getElementById('lang-ar').addEventListener('click', () => { currentLanguage='ar'; document.documentElement.lang='ar'; document.documentElement.dir='rtl'; document.title='دارنا - زيت الزيتون الفاخر'; document.getElementById('lang-ar').classList.add('active'); document.getElementById('lang-en').classList.remove('active'); updateAllTexts(); localStorage.setItem('darnaLanguage','ar'); });
-            document.getElementById('lang-en').addEventListener('click', () => { currentLanguage='en'; document.documentElement.lang='en'; document.documentElement.dir='ltr'; document.title='DARNA - Premium Olive Oil'; document.getElementById('lang-ar').classList.remove('active'); document.getElementById('lang-en').classList.add('active'); updateAllTexts(); localStorage.setItem('darnaLanguage','en'); });
-            const savedLang = localStorage.getItem('darnaLanguage'); if (savedLang==='en') document.getElementById('lang-en').click();
+        // Event listeners
+        document.getElementById('cart-button').addEventListener('click', ()=>{
+            renderOrderItems(); 
+            document.getElementById('order-modal').style.display = 'flex';
+        });
+        
+        document.getElementById('close-order').addEventListener('click', ()=>document.getElementById('order-modal').style.display = 'none');
+        document.getElementById('continue-shopping').addEventListener('click', ()=>document.getElementById('order-modal').style.display = 'none');
+        
+        document.getElementById('clear-cart-btn').addEventListener('click', ()=>{ 
+            cart = []; 
+            saveCart(); 
+            renderOrderItems(); 
+            showMessage('order-message', currentLanguage==='ar'?'تم إفراغ السلة':'Cart cleared','success'); 
+        });
+        
+        document.getElementById('order-form').addEventListener('submit', async(e)=>{
+            e.preventDefault(); 
+            if(!cart.length) { 
+                showMessage('order-message', currentLanguage==='ar'?'السلة فارغة':'Cart is empty','error'); 
+                return; 
+            }
+            
+            const orderData = { 
+                name: document.getElementById('order-name').value, 
+                phone: document.getElementById('order-phone').value, 
+                email: document.getElementById('order-email').value, 
+                address: document.getElementById('order-address').value, 
+                notes: document.getElementById('order-notes').value || '-'
+            };
+            
+            let details = ''; 
+            cart.forEach(i => { 
+                details += `• ${currentLanguage==='ar'?i.nameAr:i.nameEn} (${i.size}) x${i.quantity} = ${i.price*i.quantity} DH\n`; 
+            });
+            
+            const formData = new FormData(); 
+            formData.append('_subject', `طلب جديد من ${orderData.name}`); 
+            formData.append('name', orderData.name); 
+            formData.append('phone', orderData.phone); 
+            formData.append('email', orderData.email); 
+            formData.append('address', orderData.address); 
+            formData.append('notes', orderData.notes); 
+            formData.append('total', document.getElementById('order-total').textContent + ' DH'); 
+            formData.append('order', details);
+            
+            document.getElementById('order-loading').style.display = 'block'; 
+            document.getElementById('confirm-order').disabled = true;
+            
+            try { 
+                let res = await fetch(ORDER_ENDPOINT, {method:'POST', body:formData, headers:{'Accept':'application/json'}}); 
+                let result = await res.json();
+                if(result.success) { 
+                    showMessage('order-message', currentLanguage==='ar'?'تم إرسال الطلب ✓':'Order sent ✓','success'); 
+                    cart = []; 
+                    saveCart(); 
+                    renderOrderItems(); 
+                    document.getElementById('order-form').reset(); 
+                } else { 
+                    showMessage('order-message', currentLanguage==='ar'?'خطأ في الإرسال':'Error','error');
+                }
+            } catch { 
+                showMessage('order-message', currentLanguage==='ar'?'خطأ في الاتصال':'Connection error','error'); 
+            } finally { 
+                document.getElementById('order-loading').style.display = 'none'; 
+                document.getElementById('confirm-order').disabled = false; 
+            }
+        });
+        
+        document.getElementById('contact-form').addEventListener('submit', async(e)=>{
+            e.preventDefault(); 
+            let fd = new FormData(); 
+            fd.append('name', document.getElementById('name').value); 
+            fd.append('email', document.getElementById('email').value); 
+            fd.append('subject', document.getElementById('subject').value); 
+            fd.append('message', document.getElementById('message').value);
+            
+            document.getElementById('contact-loading').style.display = 'block'; 
+            document.querySelector('#contact-form .submit-btn').disabled = true;
+            
+            try { 
+                let res = await fetch(CONTACT_ENDPOINT, {method:'POST', body:fd, headers:{'Accept':'application/json'}}); 
+                if(res.ok) { 
+                    showMessage('contact-message', currentLanguage==='ar'?'تم الإرسال ✓':'Sent ✓','success'); 
+                    document.getElementById('contact-form').reset(); 
+                } else { 
+                    showMessage('contact-message', currentLanguage==='ar'?'خطأ في الإرسال':'Error','error'); 
+                }
+            } catch { 
+                showMessage('contact-message', currentLanguage==='ar'?'خطأ في الاتصال':'Connection error','error'); 
+            } finally { 
+                document.getElementById('contact-loading').style.display = 'none'; 
+                document.querySelector('#contact-form .submit-btn').disabled = false; 
+            }
         });
 
+        // Language switching
+        document.getElementById('lang-ar').addEventListener('click', ()=>{ 
+            currentLanguage = 'ar'; 
+            document.documentElement.lang = 'ar'; 
+            document.documentElement.dir = 'rtl'; 
+            document.getElementById('lang-ar').classList.add('active'); 
+            document.getElementById('lang-en').classList.remove('active'); 
+            updateAllTexts(); 
+            localStorage.setItem('darnaLanguage','ar'); 
+        });
+        
+        document.getElementById('lang-en').addEventListener('click', ()=>{ 
+            currentLanguage = 'en'; 
+            document.documentElement.lang = 'en'; 
+            document.documentElement.dir = 'ltr'; 
+            document.getElementById('lang-en').classList.add('active'); 
+            document.getElementById('lang-ar').classList.remove('active'); 
+            updateAllTexts(); 
+            localStorage.setItem('darnaLanguage','en'); 
+        });
+        
         function updateAllTexts() {
-            document.querySelectorAll('[data-ar], [data-en]').forEach(el => { 
-                if (currentLanguage==='ar' && el.hasAttribute('data-ar')) { 
-                    if (el.tagName==='INPUT'||el.tagName==='TEXTAREA') el.placeholder = el.getAttribute('data-ar-placeholder')||el.getAttribute('data-ar'); 
-                    else el.textContent = el.getAttribute('data-ar'); 
-                } else if (currentLanguage==='en' && el.hasAttribute('data-en')) { 
-                    if (el.tagName==='INPUT'||el.tagName==='TEXTAREA') el.placeholder = el.getAttribute('data-en-placeholder')||el.getAttribute('data-en'); 
-                    else el.textContent = el.getAttribute('data-en'); 
+            document.querySelectorAll('[data-ar],[data-en]').forEach(el => { 
+                if(currentLanguage === 'ar' && el.dataset.ar) { 
+                    if(el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = el.dataset.ar; 
+                    } else { 
+                        el.textContent = el.dataset.ar; 
+                    }
+                } else if(currentLanguage === 'en' && el.dataset.en) { 
+                    if(el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = el.dataset.en; 
+                    } else { 
+                        el.textContent = el.dataset.en; 
+                    }
                 } 
             });
+            
+            // Update product sizes in cart when language changes
+            cart = cart.map(item => {
+                const product = productsData.find(p => p.id === item.id);
+                if(product) {
+                    item.size = currentLanguage === 'ar' ? product.sizeAr : product.sizeEn;
+                }
+                return item;
+            });
+            saveCart();
             renderProducts(); 
-            if (cart.length) {
-                cart = cart.map(item => {
-                    const product = productsData.find(p => p.id === item.id);
-                    if (product) {
-                        item.size = currentLanguage === 'ar' ? product.sizeAr : product.sizeEn;
-                    }
-                    return item;
-                });
-                renderOrderItems();
+            if(document.getElementById('order-modal').style.display === 'flex') {
+                renderOrderItems(); 
             }
         }
-
-        cartButton.addEventListener('click', (e) => { e.preventDefault(); renderOrderItems(); orderModal.style.display='flex'; document.getElementById('order-alert').style.display='none'; });
-        closeOrder.addEventListener('click', () => orderModal.style.display='none');
-        continueShopping.addEventListener('click', () => orderModal.style.display='none');
-        window.addEventListener('click', (e) => { if (e.target === orderModal) orderModal.style.display='none'; });
-        clearCartBtn.addEventListener('click', () => { if (!cart.length) { showAlert('order-alert', currentLanguage==='ar'?'السلة فارغة!':'Cart empty!','error'); return; } cart = []; localStorage.setItem('darnaCart', JSON.stringify(cart)); updateCartCount(); renderOrderItems(); showAlert('order-alert', currentLanguage==='ar'?'تم إفراغ السلة':'Cart cleared','success'); });
-
-        document.getElementById('order-form').addEventListener('submit', async (e) => {
-            e.preventDefault(); if (!cart.length) { showAlert('order-alert', currentLanguage==='ar'?'السلة فارغة!':'Cart empty!','error'); return; }
-            const orderData = { name: document.getElementById('order-name').value, phone: document.getElementById('order-phone').value, email: document.getElementById('order-email').value, address: document.getElementById('order-address').value, notes: document.getElementById('order-notes').value||'No notes', date: new Date().toLocaleString(currentLanguage==='ar'?'ar-MA':'en-US'), total: document.getElementById('order-total').textContent, language: currentLanguage };
-            let orderDetails = currentLanguage==='ar'?'تفاصيل الطلب:\n\n':'Order Details:\n\n';
-            cart.forEach(item => { orderDetails += `• ${currentLanguage==='ar'?item.nameAr:item.nameEn} (${item.size})\n  ${currentLanguage==='ar'?'الكمية':'Qty'}: ${item.quantity}  ${currentLanguage==='ar'?'السعر':'Price'}: ${item.price} ${currentLanguage==='ar'?'درهم':'DH'}\n  ${currentLanguage==='ar'?'المجموع':'Total'}: ${item.price*item.quantity} ${currentLanguage==='ar'?'درهم':'DH'}\n\n`; });
-            const formData = new FormData();
-            formData.append('_subject', `${currentLanguage==='ar'?'طلب جديد - دارنا':'New Order - DARNA'} ${orderData.name}`); formData.append('name', orderData.name); formData.append('phone', orderData.phone); formData.append('email', orderData.email); formData.append('address', orderData.address); formData.append('notes', orderData.notes); formData.append('total', `${orderData.total} ${currentLanguage==='ar'?'درهم':'DH'}`); formData.append('order_details', orderDetails); formData.append('date', orderData.date); formData.append('language', orderData.language); formData.append('_template','table'); formData.append('_captcha','false');
-            document.getElementById('order-loading').style.display='block'; document.getElementById('confirm-order').disabled=true;
-            try { const res = await fetch(ORDER_ENDPOINT, {method:'POST', body:formData, headers:{'Accept':'application/json'}}); const result = await res.json();
-                if (result.success) { showAlert('order-alert', currentLanguage==='ar'?`<div style="text-align:center;"><i class="fas fa-check-circle" style="font-size:3rem;color:var(--primary-green);margin-bottom:15px;"></i><h3>شكراً لك!</h3><p>تم استلام طلبك، سنتصل بك قريباً.</p><p style="margin-top:10px;font-size:0.9em;">رقم الطلب: #${Date.now().toString().slice(-6)}</p></div>`:`<div style="text-align:center;"><i class="fas fa-check-circle" style="font-size:3rem;color:var(--primary-green);margin-bottom:15px;"></i><h3>Thank you!</h3><p>Order received, we'll contact you soon.</p><p style="margin-top:10px;font-size:0.9em;">Order #${Date.now().toString().slice(-6)}</p></div>`, 'success');
-                    cart = []; localStorage.setItem('darnaCart', JSON.stringify(cart)); updateCartCount(); renderOrderItems(); document.getElementById('order-form').reset(); }
-                else { showAlert('order-alert', currentLanguage==='ar'?'حدث خطأ، حاول مرة أخرى.':'An error occurred.','error'); }
-            } catch { showAlert('order-alert', currentLanguage==='ar'?'خطأ في الاتصال.':'Connection error.','error'); }
-            finally { document.getElementById('order-loading').style.display='none'; document.getElementById('confirm-order').disabled=false; }
+        
+        document.addEventListener('DOMContentLoaded', ()=>{ 
+            let saved = localStorage.getItem('darnaLanguage'); 
+            if(saved === 'en') { 
+                document.getElementById('lang-en').click(); 
+            } else { 
+                updateAllTexts(); 
+            }
+            updateCartCount(); 
         });
-
-        document.getElementById('contact-form').addEventListener('submit', async (e) => {
-            e.preventDefault(); const formData = new FormData(); formData.append('name', document.getElementById('name').value); formData.append('email', document.getElementById('email').value); formData.append('subject', document.getElementById('subject').value); formData.append('message', document.getElementById('message').value);
-            document.getElementById('contact-loading').style.display='block'; document.querySelector('#contact-form .submit-btn').disabled=true;
-            try { const res = await fetch(CONTACT_ENDPOINT, {method:'POST', body:formData, headers:{'Accept':'application/json'}});
-                if (res.ok) { showAlert('contact-alert', currentLanguage==='ar'?'تم الإرسال بنجاح!':'Sent successfully!','success'); document.getElementById('contact-form').reset(); }
-                else { showAlert('contact-alert', currentLanguage==='ar'?'حدث خطأ.':'Error.','error'); }
-            } catch { showAlert('contact-alert', currentLanguage==='ar'?'خطأ في الاتصال.':'Connection error.','error'); }
-            finally { document.getElementById('contact-loading').style.display='none'; document.querySelector('#contact-form .submit-btn').disabled=false; }
+        
+        window.addEventListener('click', (e)=>{ 
+            if(e.target === document.getElementById('order-modal')) { 
+                document.getElementById('order-modal').style.display = 'none'; 
+            }
         });
-
-        document.querySelectorAll('nav a').forEach(a => a.addEventListener('click', function(e) { if (this.getAttribute('href').startsWith('#')) { e.preventDefault(); document.querySelector(this.getAttribute('href')).scrollIntoView({behavior:'smooth', block:'start'}); } }));
+        
+        document.querySelectorAll('nav a').forEach(a => a.addEventListener('click', function(e){ 
+            if(this.hash) { 
+                e.preventDefault(); 
+                document.querySelector(this.hash).scrollIntoView({behavior:'smooth'}); 
+            }
+        }));
     </script>
 </body>
 </html>
